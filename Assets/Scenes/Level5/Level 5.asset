@@ -82,7 +82,7 @@ MonoBehaviour:
     value: 1
   gradingMode:
     overrideState: 1
-    value: 0
+    value: 1
   externalLut:
     overrideState: 0
     value: {fileID: 0}
@@ -135,7 +135,7 @@ MonoBehaviour:
     value: 35
   postExposure:
     overrideState: 1
-    value: 0.28
+    value: 0.41
   contrast:
     overrideState: 1
     value: -4.71

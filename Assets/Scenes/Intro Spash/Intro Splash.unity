@@ -565,6 +565,11 @@ PrefabInstance:
       propertyPath: m_Colors.m_HighlightedColor.b
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 9160726451588499808, guid: 41016de674668d042a77769eae62a191,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9160726451653468295, guid: 41016de674668d042a77769eae62a191,
         type: 3}
       propertyPath: m_Colors.m_HighlightedColor.r
@@ -885,11 +890,6 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 9160726451588499808, guid: 41016de674668d042a77769eae62a191,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 9160726451653468409, guid: 41016de674668d042a77769eae62a191,
         type: 3}
       propertyPath: m_IsActive
@@ -1139,6 +1139,14 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SizeDelta.x
       value: 793.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7064694020330270501, guid: 41016de674668d042a77769eae62a191,
+        type: 3}
+      propertyPath: m_Text
+      value: "Recent Updates:\n-Updated UIs to become more responsive, though the
+        game is optimized for 1280px720p.\r\n-Graphics remastered for all current
+        levels.\r\n-Lighting remastered for all current levels.\r\n-Gravity modifier
+        on chicken adjusted.\r\n\n\n"
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 41016de674668d042a77769eae62a191, type: 3}
