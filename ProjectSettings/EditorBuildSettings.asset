@@ -12,6 +12,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Controls/Controls.unity
     guid: 8a6f6b8ba9059b440931e2004c2e53ed
   - enabled: 1
+    path: Assets/Scenes/Mode Select/Mode Select.unity
+    guid: 00e6bdfb43217804582e0337f87b2133
+  - enabled: 1
     path: Assets/Scenes/Level1/Level1.unity
     guid: e9d61d3652d71e94dbcd931c1668f830
   - enabled: 1

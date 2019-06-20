@@ -129,7 +129,7 @@ namespace Game.Control
         public void StartDeathSequence()
         {
             effectsFactory.PlayerDies();
-            levelLoader.LoadFirstScene();
+            //levelLoader.LoadFirstScene();
         }
     }
 }

@@ -8,32 +8,52 @@ namespace Game.Core
 {
     public class LevelLoader : MonoBehaviour
     {
+
 // This class is a component of GameObject "System"
         public float levelLoadDelay = 2f;
         public bool newLevelLoad = false;
+
+        public enum GameMode
+        {
+            Normal,
+            Hard
+        }
     
+        private GameMode _gameMode;
+
+        public GameMode CurrentGameMode
+        {
+            get{ return _gameMode; }
+            set{ _gameMode = value; } 
+        }
+
         [SerializeField] Button newGame;
         [SerializeField] Button controls;
         [SerializeField] Button version;
+        Button normal;
+        Button hard;
 
         public void Start()
         {
-            newGame.onClick.AddListener(LoadFirstScene);
+            newGame.onClick.AddListener(LoadModeScene);
             controls.onClick.AddListener(ShowControls);
             version.onClick.AddListener(ShowVersionInfo);
 
             GetVersionNumber();
-        }
 
+            Debug.Log("Class: " + this + ". Game Mode: " + CurrentGameMode + ".");
+            DontDestroyOnLoad(this.gameObject);
+        }
         void Update()
         {
             HideVersionInfoOnClickAway();
         }
 
+        
+
         void HideVersionInfoOnClickAway()
         {
             if(Input.GetMouseButtonDown(0)){
-                Debug.Log("Mouse Click!");
                 RaycastHit hit;
                 Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
@@ -98,17 +118,19 @@ namespace Game.Core
             }
         }
 
-        public void LoadFirstScene() // SceneLoader
+        public void LoadModeScene() // SceneLoader
         {
-            Debug.Log("waiting to load first scene");
-            Debug.Log("loading first scene");
             SceneManager.LoadScene(2);
-          // GetComponent<EffectsFactory>().isTransitioning = false;
         }
 
         public void ShowControls()
         {
             SceneManager.LoadScene(1);
+        }
+
+        public void StartGame()
+        {
+            SceneManager.LoadScene(3);
         }
 
         public IEnumerator LoadNextScene() // SceneLoader

@@ -89,6 +89,7 @@ namespace TMPro.Examples
         /// Method to draw a rectangle around each character.
         /// </summary>
         /// <param name="text"></param>
+        [System.Obsolete]
         void DrawCharactersBounds()
         {
             TMP_TextInfo textInfo = m_TextComponent.textInfo;
