@@ -64,7 +64,7 @@ namespace Game.Core
         {
             if (Input.GetKeyDown(KeyCode.L))
             {
-                LoadNextScene();
+                LevelLoader.NextScene();
             }
             else if (Input.GetKeyDown(KeyCode.C))
             {
@@ -96,6 +96,7 @@ namespace Game.Core
             audioSource.Stop();
             audioSource.PlayOneShot(win);
             winParticles.Play();
+            
             StartCoroutine(levelLoader.LoadSceneWithDelay());
         }
 
@@ -108,11 +109,6 @@ namespace Game.Core
 
             // Load scene based on game mode
             StartCoroutine(levelLoader.LoadSceneWithDelay(levelLoader.CurrentGameMode, false));
-        }
-
-        private void LoadNextScene()
-        {
-            StartCoroutine(levelLoader.LoadSceneWithDelay());
         }
 
         private void RespondToRotateInput()
@@ -136,7 +132,7 @@ namespace Game.Core
             }
             else if (Input.GetKey(KeyCode.D))
             {
-                if (SceneManager.GetActiveScene().name == "Level6")
+                if (SceneManager.GetActiveScene().name == "Level5")
                 {
                     transform.Rotate(Vector3.forward * rotationThisFrame);
                 }

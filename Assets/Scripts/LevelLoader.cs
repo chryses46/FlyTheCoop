@@ -217,8 +217,6 @@ namespace Game.Core
 
         public IEnumerator LoadSceneWithDelay(GameMode mode = GameMode.Normal, bool winning = true) // SceneLoader
         {
-            int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
-            int nextSceneIndex;
             
             if(!winning && mode == GameMode.Hard)
             {
@@ -234,18 +232,8 @@ namespace Game.Core
 
             if(winning)
             {
-                //Reaches end of SceceCount and returns to main menu
-                if (currentSceneIndex == SceneManager.sceneCountInBuildSettings - 1)
-                {
-                    yield return new WaitForSeconds(levelLoadDelay);
-                    Home();
-                }
-                else //Loads the next scene
-                {
-                    yield return new WaitForSeconds(levelLoadDelay);
-                    nextSceneIndex = currentSceneIndex + 1;
-                    NextScene(nextSceneIndex);
-                }
+                yield return new WaitForSeconds(levelLoadDelay);
+                NextScene();
             }
         }
 
@@ -261,10 +249,19 @@ namespace Game.Core
             GameObject.FindWithTag("Player").GetComponent<Chicken>().isTransitioning = false;
         }
 
-        private static void NextScene(int nextSceneIndex)
+        public static void NextScene()
         {
-            SceneManager.LoadScene(nextSceneIndex);
-            GameObject.FindWithTag("Player").GetComponent<Chicken>().isTransitioning = false;
+            int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+
+            //Reaches end of SceceCount and returns to main menu
+            if (currentSceneIndex == SceneManager.sceneCountInBuildSettings - 1)
+            {
+                Home();
+            }
+            else //Loads the next scene
+            {
+                SceneManager.LoadScene(currentSceneIndex + 1);
+            }
         }
 
         private void ThisScene()
