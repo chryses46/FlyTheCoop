@@ -46,7 +46,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levelLoadDelay: 2
-  newLevelLoad: 0
   newGame: {fileID: 0}
   controls: {fileID: 0}
   version: {fileID: 0}
@@ -150,6 +149,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_ReferenceResolution.y
       value: 720
+      objectReference: {fileID: 0}
+    - target: {fileID: 991539540694287504, guid: ddc20a383ae37fe439a0e61e9faa10c1,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ddc20a383ae37fe439a0e61e9faa10c1, type: 3}

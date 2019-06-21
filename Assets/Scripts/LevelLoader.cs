@@ -12,7 +12,6 @@ namespace Game.Core
 
 // This class is a component of GameObject "System"
         public float levelLoadDelay = 2f;
-        public bool newLevelLoad = false;
 
         #region GameMode
         //Enum for game mode
@@ -237,9 +236,9 @@ namespace Game.Core
             }
         }
 
-        private static void Home()
+        public static void GameWon()
         {
-            SceneManager.LoadScene(0);
+            SceneManager.LoadScene("WinScreen");
             GameObject.FindWithTag("Player").GetComponent<Chicken>().isTransitioning = false;
         }
 
@@ -253,10 +252,10 @@ namespace Game.Core
         {
             int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
 
-            //Reaches end of SceceCount and returns to main menu
-            if (currentSceneIndex == SceneManager.sceneCountInBuildSettings - 1)
+            //Reaches end of SceceCount (wins game) and goes to WinScreen
+            if (currentSceneIndex == SceneManager.sceneCountInBuildSettings - 2)
             {
-                Home();
+                GameWon();
             }
             else //Loads the next scene
             {
@@ -272,8 +271,6 @@ namespace Game.Core
 
         public void OnSceneLoaded(Scene scene, LoadSceneMode mode)
         {
-            //Debug.Log("Scene " + scene.buildIndex + " loaded.");
-
             int loadedSceneIndex = scene.buildIndex;
 
             if(loadedSceneIndex == 0)
