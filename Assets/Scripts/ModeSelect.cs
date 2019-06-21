@@ -18,6 +18,7 @@ namespace Game.Core
         {
             normalButton.onClick.AddListener(SetNormalMode);
             hardButton.onClick.AddListener(SetHardMode);
+            
             levelLoader = FindObjectOfType<LevelLoader>().GetComponent<LevelLoader>();
         }
 
@@ -31,12 +32,6 @@ namespace Game.Core
         {
             levelLoader.CurrentGameMode = LevelLoader.GameMode.Normal;
             levelLoader.StartGame();
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
-            
         }
     }
 }

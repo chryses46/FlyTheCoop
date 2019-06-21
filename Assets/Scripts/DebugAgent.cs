@@ -13,7 +13,7 @@ namespace Game.Core
         {
             if (Input.GetKeyDown(KeyCode.L)) 
             {
-                levelLoader.LoadNextScene();
+//                levelLoader.LoadNextScene();
             }
             else if (Input.GetKeyDown(KeyCode.C))
             {

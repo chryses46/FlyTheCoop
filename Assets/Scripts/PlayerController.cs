@@ -123,7 +123,7 @@ namespace Game.Control
          public void StartWinSequence() 
         {
             effectsFactory.PlayerWins();
-            StartCoroutine(levelLoader.LoadNextScene());
+//            StartCoroutine(levelLoader.LoadNextScene());
         }
 
         public void StartDeathSequence()

@@ -4,18 +4,33 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class MainMenu : MonoBehaviour
+namespace Game.Core
 {
-    [SerializeField] Button mainMenu;
-   
-    public void Start()
+    public class MainMenu : MonoBehaviour
     {
-        mainMenu.onClick.AddListener(LoadMainMenu);
-    }
 
-    public void LoadMainMenu()
-    {
-        Debug.Log("Clicked");
-        SceneManager.LoadScene(0);
+        [SerializeField] Button mainMenu;
+    
+        LevelLoader levelLoader;
+        public void OnEnable()
+        {
+            mainMenu.onClick.AddListener(LoadMainMenu);
+            levelLoader = GetComponent<LevelLoader>();
+
+        }
+
+        public void LoadMainMenu()
+        {
+            Debug.Log("Clicked");
+            SceneManager.LoadScene(0);
+            if(levelLoader.CurrentGameState == LevelLoader.GameState.Pause)
+            {
+                if(GameObject.Find("PauseScreen").activeSelf == true)
+                {
+                    GameObject.Find("PauseScreen").SetActive(false);
+                }
+            }
+        
+        }
     }
 }

@@ -29,9 +29,11 @@ namespace Game.Core
         AudioSource audioSource;
 
         LevelLoader levelLoader;
-        bool isTransitioning = false;
+        public bool isTransitioning = false;
 
         bool collisionsDisabled = false;
+
+        RigidbodyConstraints originalConstraints;
 
         // Start is called before the first frame update
         public void Start()
@@ -39,12 +41,9 @@ namespace Game.Core
             rigidBody = GetComponent<Rigidbody>();
             audioSource = GetComponent<AudioSource>();
             levelLoader = FindObjectOfType<LevelLoader>().GetComponent<LevelLoader>();
-            Debug.Log("Class: " + this + ". Game Mode: " + levelLoader.CurrentGameMode + ".");
-
+            originalConstraints = rigidBody.constraints;
         }
-            
-        
-        // Update is called once per frame
+    
         void Update()
         {
             if (!isTransitioning)
@@ -57,6 +56,8 @@ namespace Game.Core
             { 
                 RespondToDebugKeys();
             }
+
+            PauseGame();
         }
 
         private void RespondToDebugKeys()
@@ -70,7 +71,6 @@ namespace Game.Core
                 collisionsDisabled = !collisionsDisabled;
             }
         }
-
 
         void OnCollisionEnter(Collision collision)
         {
@@ -96,49 +96,23 @@ namespace Game.Core
             audioSource.Stop();
             audioSource.PlayOneShot(win);
             winParticles.Play();
-            Invoke("LoadNextScene", levelLoadDelay);
+            StartCoroutine(levelLoader.LoadSceneWithDelay());
         }
 
         private void StartDeathSequence()
         {
-            
-                isTransitioning = true;
-                audioSource.Stop();
-                audioSource.PlayOneShot(death);
-                deathParticles.Play();
-                // Load scene based on game mode
-                if(levelLoader.CurrentGameMode == LevelLoader.GameMode.Hard){
-                    Invoke("LoadFirstScene", levelLoadDelay);
-                }else{Invoke("LoadThisScene", levelLoadDelay);}
-        }
+            isTransitioning = true;
+            audioSource.Stop();
+            audioSource.PlayOneShot(death);
+            deathParticles.Play();
 
-        private void LoadFirstScene()
-        {
-            SceneManager.LoadScene(3);
-        }
-
-        private void LoadThisScene()
-        {
-            int currentScene = SceneManager.GetActiveScene().buildIndex;
-            SceneManager.LoadScene(currentScene);
+            // Load scene based on game mode
+            StartCoroutine(levelLoader.LoadSceneWithDelay(levelLoader.CurrentGameMode, false));
         }
 
         private void LoadNextScene()
         {
-            int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
-            int nextSceneIndex;
-
-            if (currentSceneIndex == SceneManager.sceneCountInBuildSettings - 1)
-            {
-                //audioSource.PlayOneShot(startLevel);
-                SceneManager.LoadScene(0);
-            }
-            else 
-            {
-                nextSceneIndex = currentSceneIndex + 1;
-                SceneManager.LoadScene(nextSceneIndex); 
-                //audioSource.PlayOneShot(startLevel); 
-            }
+            StartCoroutine(levelLoader.LoadSceneWithDelay());
         }
 
         private void RespondToRotateInput()
@@ -204,6 +178,27 @@ namespace Game.Core
                 audioSource.PlayOneShot(flyingChicken);
             }
 
+        }
+
+        public void PauseGame()
+        {
+            if(Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.P))
+            {
+                if(levelLoader.CurrentGameState == LevelLoader.GameState.Play)
+                {
+                    levelLoader.CurrentGameState = LevelLoader.GameState.Pause;
+                    levelLoader.PauseScreenControl();
+                    isTransitioning = true;
+                    rigidBody.constraints = RigidbodyConstraints.FreezeAll;
+
+                }else{
+
+                    levelLoader.CurrentGameState = LevelLoader.GameState.Play;
+                    levelLoader.PauseScreenControl();
+                    isTransitioning = false;
+                    rigidBody.constraints = originalConstraints;
+                }
+            }
         }
     }
 }
