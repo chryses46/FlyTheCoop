@@ -653,10 +653,10 @@ PlayerSettings:
   facebookXfbml: 0
   facebookFrictionlessRequests: 1
   apiCompatibilityLevel: 6
-  cloudProjectId: 
+  cloudProjectId: d7585011-b56f-428c-a41a-8376d5a855b7
   framebufferDepthMemorylessMode: 0
-  projectName: 
-  organizationId: 
+  projectName: Fly The Coop
+  organizationId: danjfrank
   cloudEnabled: 0
   enableNativePlatformBackendsForNewInputSystem: 0
   disableOldInputManagerSupport: 0
