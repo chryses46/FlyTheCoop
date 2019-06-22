@@ -175,6 +175,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   introMusic: {fileID: 8300000, guid: 6391c48f1f945eb43a03547db1fd3c55, type: 3}
   gameMuisc: {fileID: 8300000, guid: 9f6ea5631149e0a4db543387a13dd7d7, type: 3}
+  winMusic: {fileID: 8300000, guid: 97cbce39846b03047a9e27db6618cfb4, type: 3}
 --- !u!1001 &3219587883933076449
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -186,11 +187,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PauseScreen
-      objectReference: {fileID: 0}
-    - target: {fileID: 991539540431908200, guid: ddc20a383ae37fe439a0e61e9faa10c1,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 991539540431908203, guid: ddc20a383ae37fe439a0e61e9faa10c1,
         type: 3}
@@ -246,6 +242,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1384948981051694871, guid: ddc20a383ae37fe439a0e61e9faa10c1,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 70
       objectReference: {fileID: 0}
     - target: {fileID: 991539540706107084, guid: ddc20a383ae37fe439a0e61e9faa10c1,
         type: 3}

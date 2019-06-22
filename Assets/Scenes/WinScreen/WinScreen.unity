@@ -642,7 +642,7 @@ MonoBehaviour:
   m_Text: 'You beat normal mode!
 
 
-    Next time try hard mode.'
+    Next time, try hard mode.'
 --- !u!224 &2288028077956559149
 RectTransform:
   m_ObjectHideFlags: 0

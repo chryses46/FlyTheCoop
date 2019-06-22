@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4007807014974069239}
   - component: {fileID: 1250224404555830779}
   - component: {fileID: 1186504715962608280}
+  - component: {fileID: 589805906}
   m_Layer: 5
   m_Name: TitleText
   m_TagString: Untagged
@@ -79,6 +80,20 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: Fly The Coop
+--- !u!114 &589805906
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2858442977862489991}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de37f878a09164845b987061188bc3e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  movementVector: {x: 0, y: 20, z: 0}
+  period: 2
 --- !u!1 &4211869705693798912
 GameObject:
   m_ObjectHideFlags: 0
@@ -247,10 +262,11 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: "Recent Updates:\n-Play Mode added!\r\n--Normal mode will respawn you at
-    the current level when you fail\r\n--Hard mode will respawn you at level 1\r\n-Updated
-    UIs to become more responsive, though the game is optimized for 1280px720p.\r\n-Graphics
-    remastered for all current levels.\r\n-Lighting remastered for all current levels.\r\n-Gravity
-    modifier on chicken adjusted.\r\n-Pause Screen Introduced\r\n-Win Screen added\r\n\n\n\n"
+    the current level when you fail\r\n--Hard mode will respawn you at level 1\r\n-Added
+    music!\r\n-Updated UIs to become more responsive, though the game is optimized
+    for 1280px720p.\r\n-Graphics remastered for all current levels.\r\n-Lighting remastered
+    for all current levels.\r\n-Gravity modifier on chicken adjusted.\r\n-Pause Screen
+    Introduced\r\n-Win Screen added\r\n-Updated particle effects\r\n"
 --- !u!1 &9160726451588499808
 GameObject:
   m_ObjectHideFlags: 0
@@ -520,6 +536,7 @@ GameObject:
   - component: {fileID: 9160726451725822114}
   - component: {fileID: 9160726451725822117}
   - component: {fileID: 2074097318}
+  - component: {fileID: 1669243960}
   m_Layer: 5
   m_Name: MainSplashCanvas
   m_TagString: Untagged
@@ -624,6 +641,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1280, y: 720, z: 12.804077}
   m_Center: {x: 0, y: 0, z: 7.3614655}
+--- !u!114 &1669243960
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9160726451725822116}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9794a07cadaa5114fa0b3b33115debec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &9160726452406448941
 GameObject:
   m_ObjectHideFlags: 0

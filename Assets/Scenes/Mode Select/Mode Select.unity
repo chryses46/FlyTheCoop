@@ -719,7 +719,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Respawn at Level One.
+  m_Text: Respawn at level one.
 --- !u!222 &1910777231
 CanvasRenderer:
   m_ObjectHideFlags: 0

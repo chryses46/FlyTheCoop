@@ -315,26 +315,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10b9b42f434b6c94aa47ff68bfe5b54f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &589805902 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2858442977862489991, guid: 41016de674668d042a77769eae62a191,
-    type: 3}
-  m_PrefabInstance: {fileID: 9160726451491934918}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &589805906
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 589805902}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: de37f878a09164845b987061188bc3e5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  movementVector: {x: 0, y: 20, z: 0}
-  period: 2
 --- !u!1 &646974478
 GameObject:
   m_ObjectHideFlags: 0
@@ -573,24 +553,6 @@ MonoBehaviour:
   m_Script: {fileID: 1392445389, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &1669243954 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 9160726451725822116, guid: 41016de674668d042a77769eae62a191,
-    type: 3}
-  m_PrefabInstance: {fileID: 9160726451491934918}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1669243960
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1669243954}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9794a07cadaa5114fa0b3b33115debec, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1749343529 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 769145135165579066, guid: 362633441972da44db4366abc3afb138,
@@ -685,10 +647,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1495573989, guid: 362633441972da44db4366abc3afb138, type: 3}
-      propertyPath: winMusic
-      value: 
-      objectReference: {fileID: 8300000, guid: 97cbce39846b03047a9e27db6618cfb4, type: 3}
+    - target: {fileID: 2408548296827676297, guid: 362633441972da44db4366abc3afb138,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 362633441972da44db4366abc3afb138, type: 3}
 --- !u!1001 &9160726451491934918
@@ -812,6 +775,57 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6923883667535924710, guid: 41016de674668d042a77769eae62a191,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 6923883667535924710, guid: 41016de674668d042a77769eae62a191,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 380.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6923883667535924710, guid: 41016de674668d042a77769eae62a191,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 1.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6923883667535924710, guid: 41016de674668d042a77769eae62a191,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 834.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7376504539880268361, guid: 41016de674668d042a77769eae62a191,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0.69995
+      objectReference: {fileID: 0}
+    - target: {fileID: 7376504539880268361, guid: 41016de674668d042a77769eae62a191,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 832.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 7376504539880268361, guid: 41016de674668d042a77769eae62a191,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7376504539880268361, guid: 41016de674668d042a77769eae62a191,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 380.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 7064694020330270501, guid: 41016de674668d042a77769eae62a191,
+        type: 3}
+      propertyPath: m_Text
+      value: "Recent Updates:\n\n-Play Mode added!\r\n--Normal mode will respawn you
+        at the current level when you fail.\r\n--Hard mode will respawn you at level
+        1\r.\n-Added music!\r\n-Updated UIs to become more responsive, though the
+        game is optimized for 1280px720p.\r\n-Graphics remastered for all current
+        levels.\r\n-Lighting remastered for all current levels.\r\n-Gravity modifier
+        on chicken adjusted.\r\n-Pause screen added.\r\n-Win screen added\r.\n-Updated
+        particle effects\r.\n"
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 41016de674668d042a77769eae62a191, type: 3}
