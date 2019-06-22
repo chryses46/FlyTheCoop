@@ -243,6 +243,7 @@ namespace Game.Core
 
             if(winning)
             {
+                Camera.main.transform.Find("WinFXv2").gameObject.SetActive(true);
                 yield return new WaitForSeconds(levelLoadDelay);
                 NextScene();
             }
@@ -251,7 +252,6 @@ namespace Game.Core
         private void FirstScene()
         {
             SceneManager.LoadScene(3);
-            GameObject.FindWithTag("Player").GetComponent<Chicken>().isTransitioning = false;
         }
 
         public void NextScene()
