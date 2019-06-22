@@ -2127,6 +2127,11 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8103079615333046162, guid: 64563719e31e54b41b3e0b650bd3424d,
+        type: 3}
+      propertyPath: InitialModule.gravityModifier.scalar
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 64563719e31e54b41b3e0b650bd3424d, type: 3}
 --- !u!1001 &939691147
