@@ -8,14 +8,20 @@ public class WinScreen : MonoBehaviour
 {
     [SerializeField] Text normalModeText;
     [SerializeField] Text hardModeText;
+    [SerializeField] Button newGame;
 
     LevelLoader levelLoader;
     void Start()
     {
         levelLoader = FindObjectOfType<LevelLoader>();
+        DetermineText();
+        newGame.onClick.AddListener(CallNewGame);
 
+    }
 
-        if(levelLoader.CurrentGameMode == LevelLoader.GameMode.Hard)
+    private void DetermineText()
+    {
+        if (levelLoader.CurrentGameMode == LevelLoader.GameMode.Hard)
         {
             EnableHardModeText();
         }
@@ -23,7 +29,6 @@ public class WinScreen : MonoBehaviour
         {
             EnableNormalModeText();
         }
-
     }
 
     private void EnableNormalModeText()
@@ -34,5 +39,10 @@ public class WinScreen : MonoBehaviour
     private void EnableHardModeText()
     {
         hardModeText.gameObject.SetActive(true);
+    }
+
+    private void CallNewGame()
+    {
+        levelLoader.LoadModeScene();
     }
 }

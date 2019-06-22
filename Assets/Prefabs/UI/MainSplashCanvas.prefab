@@ -90,6 +90,7 @@ GameObject:
   - component: {fileID: 6923883667535924710}
   - component: {fileID: 438548357407642703}
   - component: {fileID: 2179844605992350383}
+  - component: {fileID: 1988706894}
   m_Layer: 5
   m_Name: VersionInfo
   m_TagString: VersionInfo
@@ -114,8 +115,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 965.2, y: 597.8}
+  m_AnchoredPosition: {x: 0, y: 1000}
+  m_SizeDelta: {x: 831.3, y: 315.7}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &438548357407642703
 CanvasRenderer:
@@ -154,6 +155,19 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
+--- !u!65 &1988706894
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4211869705693798912}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 831.3, y: 315.7, z: 40.23257}
+  m_Center: {x: 0, y: 0, z: -19.616285}
 --- !u!1 &8268141725646214321
 GameObject:
   m_ObjectHideFlags: 0
@@ -188,8 +202,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0, y: -35}
-  m_SizeDelta: {x: 907.2, y: 420.5}
+  m_AnchoredPosition: {x: 0, y: -0.000073433}
+  m_SizeDelta: {x: 831.3, y: 315.7}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8041271980174379228
 CanvasRenderer:
@@ -220,8 +234,8 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 34
+    m_Font: {fileID: 12800000, guid: 0c20adec848f6ad43b2636a0cd507553, type: 3}
+    m_FontSize: 27
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 10
@@ -232,9 +246,11 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u2022 Updated UIs to become more responsive, though game is made for 1280x720.\r\n\u2022
-    Level 1 graphics remastered.\r\n\u2022 Fixed a bug in level 1 where you could
-    fly up and off the map.\r\n\u2022 Level 4 has been made \"easier\".\r\n\n"
+  m_Text: "Recent Updates:\n-Play Mode added!\r\n--Normal mode will respawn you at
+    the current level when you fail\r\n--Hard mode will respawn you at level 1\r\n-Updated
+    UIs to become more responsive, though the game is optimized for 1280px720p.\r\n-Graphics
+    remastered for all current levels.\r\n-Lighting remastered for all current levels.\r\n-Gravity
+    modifier on chicken adjusted.\r\n-Pause Screen Introduced\r\n-Win Screen added\r\n\n\n\n"
 --- !u!1 &9160726451588499808
 GameObject:
   m_ObjectHideFlags: 0
@@ -247,6 +263,7 @@ GameObject:
   - component: {fileID: 9160726451588499823}
   - component: {fileID: 9160726451588499822}
   - component: {fileID: 9160726451588499809}
+  - component: {fileID: 425032763}
   m_Layer: 5
   m_Name: Version
   m_TagString: Untagged
@@ -356,6 +373,19 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!65 &425032763
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9160726451588499808}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 221.988, y: 67.51256, z: 17.923523}
+  m_Center: {x: 110.77742, y: 34.5821, z: -8.461761}
 --- !u!1 &9160726451653468409
 GameObject:
   m_ObjectHideFlags: 0
@@ -489,6 +519,7 @@ GameObject:
   - component: {fileID: 9160726451725822115}
   - component: {fileID: 9160726451725822114}
   - component: {fileID: 9160726451725822117}
+  - component: {fileID: 2074097318}
   m_Layer: 5
   m_Name: MainSplashCanvas
   m_TagString: Untagged
@@ -580,6 +611,19 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!65 &2074097318
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9160726451725822116}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1280, y: 720, z: 12.804077}
+  m_Center: {x: 0, y: 0, z: 7.3614655}
 --- !u!1 &9160726452406448941
 GameObject:
   m_ObjectHideFlags: 0
@@ -856,7 +900,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 9160726452766539648}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_MethodName: LoadModeScene
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!1 &9160726453212930712

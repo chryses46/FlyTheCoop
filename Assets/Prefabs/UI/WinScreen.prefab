@@ -36,7 +36,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.3935625, y: 0}
   m_AnchorMax: {x: 0.3935625, y: 0}
-  m_AnchoredPosition: {x: -145, y: 73.165}
+  m_AnchoredPosition: {x: -86, y: 73.165}
   m_SizeDelta: {x: 319.7, y: 90.771}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!222 &588474038185862737
@@ -119,8 +119,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: Home
+      - m_Target: {fileID: 769145135165579066, guid: 362633441972da44db4366abc3afb138,
+          type: 3}
+        m_MethodName: LoadMainMenu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -368,10 +369,10 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'You beat Normal mode!
+  m_Text: 'You beat normal mode!
 
 
-    Next time try Hard mode.'
+    Next time try hard mode.'
 --- !u!1 &5080397455258647949
 GameObject:
   m_ObjectHideFlags: 0
@@ -561,7 +562,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.625, y: 0}
   m_AnchorMax: {x: 0.625, y: 0}
-  m_AnchoredPosition: {x: 94, y: 72}
+  m_AnchoredPosition: {x: 83, y: 72.001}
   m_SizeDelta: {x: 327.7, y: 93.1}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!222 &6298083896542251074
@@ -644,7 +645,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 769145135165579066, guid: 362633441972da44db4366abc3afb138,
+          type: 3}
         m_MethodName: LoadModeScene
         m_Mode: 1
         m_Arguments:
@@ -674,7 +676,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &3923702580114171340
 RectTransform:
   m_ObjectHideFlags: 0
@@ -691,8 +693,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.000022888, y: 0}
-  m_SizeDelta: {x: 706.4, y: 314.7}
+  m_AnchoredPosition: {x: 0, y: 0.000005722}
+  m_SizeDelta: {x: 767.4, y: 341.9}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6450638633710164560
 CanvasRenderer:
@@ -735,7 +737,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Awesome! You beat hard mode! \n\nCheck back soon for more levels"
+  m_Text: "Awesome! \nYou beat hard mode! \n\nCheck back soon for more levels."
 --- !u!1 &7609315537928057906
 GameObject:
   m_ObjectHideFlags: 0
@@ -745,8 +747,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1986206213081216016}
-  - component: {fileID: 6035972552016435742}
-  - component: {fileID: 4111603718234531649}
+  - component: {fileID: 1400556057}
   m_Layer: 0
   m_Name: WinScreen
   m_TagString: Untagged
@@ -769,7 +770,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6035972552016435742
+--- !u!114 &1400556057
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -778,22 +779,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 7609315537928057906}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6e498be5d7a8fd943849b42654e10d68, type: 3}
+  m_Script: {fileID: 11500000, guid: 57547ea256ceea643933d996a5119023, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mainMenu: {fileID: 588474038185862739}
---- !u!114 &4111603718234531649
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7609315537928057906}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 16a0c48f205b92e438fcf02df81a892e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  normalModeText: {fileID: 2272646785266711452}
+  hardModeText: {fileID: 4051793331883826463}
 --- !u!1 &8729846155750440646
 GameObject:
   m_ObjectHideFlags: 0

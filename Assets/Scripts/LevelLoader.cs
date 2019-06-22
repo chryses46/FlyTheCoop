@@ -31,11 +31,14 @@ namespace Game.Core
         #endregion
         #region GameState
         //Enum for gameState
+
         public enum GameState
         {
+            Menu,
             Play,
             Pause
         }
+
         private GameState _gameState;
         public GameState CurrentGameState
         {
@@ -50,10 +53,7 @@ namespace Game.Core
 
         GameObject mainSpalsh;
 
-        Oscillator oscilltor;
-
-        Button normal;
-        Button hard;
+        MusicPlayer music;
 
         void OnEnable()
         {
@@ -63,8 +63,8 @@ namespace Game.Core
         public void Start()
         {
             AddListeners();
-            GetVersionNumber();
             ThereCanOnlyBeOne();
+            music = GetComponent<MusicPlayer>();
         }
 
         void Update()
@@ -130,14 +130,6 @@ namespace Game.Core
             }
         }
 
-        private static void GetVersionNumber()
-        {
-            GameObject versionTextGo = GameObject.Find("VersionText");
-            Text versionText = versionTextGo.GetComponent<Text>();
-            string versionNumber = "v." + Application.version;
-            versionText.text = versionNumber;
-        }
-
         public void ShowVersionInfo()
         {
             GameObject versionInfoGo = GameObject.Find("VersionInfo");
@@ -180,6 +172,18 @@ namespace Game.Core
         }
         #endregion
 
+        public void LoadMainMenu()
+        {
+            SceneManager.LoadScene(0);
+            music.PlayIntroMusic();
+            CurrentGameState = GameState.Menu;
+            
+            if(pauseScreen.activeSelf == true)
+            {
+                pauseScreen.SetActive(false);
+            }   
+        }
+
         public void ShowControls()
         {
             SceneManager.LoadScene(1);
@@ -188,12 +192,20 @@ namespace Game.Core
         public void LoadModeScene() // SceneLoader
         {
             SceneManager.LoadScene(2);
+            music.PlayIntroMusic();
         }
 
         public void StartGame()
         {
             CurrentGameState = GameState.Play;
             SceneManager.LoadScene(3);
+            music.PlayGameMusic();
+        }
+
+        public void GameWon()
+        {
+            SceneManager.LoadScene("WinScreen");
+            music.PlayWinMusic();
         }
 
         public void PauseScreenControl()
@@ -236,19 +248,13 @@ namespace Game.Core
             }
         }
 
-        public static void GameWon()
-        {
-            SceneManager.LoadScene("WinScreen");
-            GameObject.FindWithTag("Player").GetComponent<Chicken>().isTransitioning = false;
-        }
-
-        private static void FirstScene()
+        private void FirstScene()
         {
             SceneManager.LoadScene(3);
             GameObject.FindWithTag("Player").GetComponent<Chicken>().isTransitioning = false;
         }
 
-        public static void NextScene()
+        public void NextScene()
         {
             int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
 
@@ -275,6 +281,7 @@ namespace Game.Core
 
             if(loadedSceneIndex == 0)
             {
+                CurrentGameState = GameState.Menu;
                 PopulateButtons();
             }
             

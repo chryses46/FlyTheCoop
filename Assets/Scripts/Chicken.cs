@@ -16,14 +16,13 @@ namespace Game.Core
         [SerializeField] float mainThrust = 20f;
         [SerializeField] float levelLoadDelay = 2f;
 
-        [SerializeField] AudioClip startLevel;
         [SerializeField] AudioClip flyingChicken;
         [SerializeField] AudioClip death;
         [SerializeField] AudioClip win;
 
         [SerializeField] ParticleSystem flyingChickenParticles;
         [SerializeField] ParticleSystem deathParticles;
-        [SerializeField] ParticleSystem winParticles;
+        //[SerializeField] ParticleSystem winParticles;
 
         Rigidbody rigidBody;
         AudioSource audioSource;
@@ -64,7 +63,7 @@ namespace Game.Core
         {
             if (Input.GetKeyDown(KeyCode.L))
             {
-                LevelLoader.NextScene();
+                levelLoader.NextScene();
             }
             else if (Input.GetKeyDown(KeyCode.C))
             {
@@ -95,7 +94,7 @@ namespace Game.Core
             isTransitioning = true;
             audioSource.Stop();
             audioSource.PlayOneShot(win);
-            winParticles.Play();
+            //winParticles.Play();
             
             StartCoroutine(levelLoader.LoadSceneWithDelay());
         }
