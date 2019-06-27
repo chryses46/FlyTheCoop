@@ -11,9 +11,15 @@ namespace Game.Core
         
         [SerializeField] Text eggCountText;
 
+        PlayerPrefConfig ppc;
+
         private int LevelScore { get; set; }
         public int TotalScore { get; private set; }
-        public int HighScore { get; private set; }
+
+        void OnEnable()
+        {
+            ppc = FindObjectOfType<PlayerPrefConfig>();
+        }
 
         public void EggCollected()
         {
@@ -30,9 +36,9 @@ namespace Game.Core
 
         public void UpdateHighScore()
         {
-            if(TotalScore > HighScore)
+            if(TotalScore > ppc.HighScore)
             {
-                HighScore = TotalScore;
+                ppc.ManageHighScore(TotalScore);
             }
         }
 

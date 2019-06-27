@@ -14,10 +14,12 @@ public class WinScreen : MonoBehaviour
 
     LevelLoader levelLoader;
     HUDController hud;
+    PlayerPrefConfig ppc;
     void Start()
     {
         levelLoader = FindObjectOfType<LevelLoader>();
         hud = FindObjectOfType<HUDController>();
+        ppc = FindObjectOfType<PlayerPrefConfig>();
         DetermineText();
         SetEggsCollectedText();
         SetMostEggsText();
@@ -56,8 +58,7 @@ public class WinScreen : MonoBehaviour
 
     private void SetMostEggsText()
     {
-        Debug.Log("HighSchore: " + hud.HighScore);
-        mostEggsCollected.text = "Most Eggs Collected: " + hud.HighScore;
+        mostEggsCollected.text = "Most Eggs Collected: " + ppc.HighScore;
     }
 
     private void CallNewGame()

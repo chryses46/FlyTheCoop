@@ -9,8 +9,6 @@ namespace Game.Core
 {
     public class LevelLoader : MonoBehaviour
     {
-
-// This class is a component of GameObject "System"
         public float levelLoadDelay = 2f;
 
         #region GameMode
