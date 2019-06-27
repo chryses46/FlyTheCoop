@@ -575,7 +575,7 @@ PrefabInstance:
     - target: {fileID: 769145135165579067, guid: 362633441972da44db4366abc3afb138,
         type: 3}
       propertyPath: m_Name
-      value: LevelLoader
+      value: GameController
       objectReference: {fileID: 0}
     - target: {fileID: 769145135165579066, guid: 362633441972da44db4366abc3afb138,
         type: 3}
@@ -647,11 +647,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2408548296827676297, guid: 362633441972da44db4366abc3afb138,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 362633441972da44db4366abc3afb138, type: 3}
 --- !u!1001 &9160726451491934918
@@ -665,6 +660,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: MainSplashCanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 9160726451725822116, guid: 41016de674668d042a77769eae62a191,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9160726452766539651, guid: 41016de674668d042a77769eae62a191,
         type: 3}

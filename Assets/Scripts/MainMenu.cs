@@ -14,7 +14,7 @@ namespace Game.Core
         LevelLoader levelLoader;
         public void OnEnable()
         {
-            levelLoader = GameObject.Find("LevelLoader").GetComponent<LevelLoader>();
+            levelLoader = GameObject.Find("GameController").GetComponent<LevelLoader>();
             mainMenu.onClick.AddListener(CallMainMenu);
 
         }

@@ -28,9 +28,11 @@ namespace Game.Core
         AudioSource audioSource;
 
         LevelLoader levelLoader;
+
+        HUDController hud;
         public bool isTransitioning = false;
 
-        bool collisionsDisabled = false;
+        public bool collisionsDisabled = false;
 
         RigidbodyConstraints originalConstraints;
 
@@ -39,7 +41,8 @@ namespace Game.Core
         {
             rigidBody = GetComponent<Rigidbody>();
             audioSource = GetComponent<AudioSource>();
-            levelLoader = FindObjectOfType<LevelLoader>().GetComponent<LevelLoader>();
+            levelLoader = FindObjectOfType<LevelLoader>();
+            hud = FindObjectOfType<HUDController>();
             originalConstraints = rigidBody.constraints;
         }
     
@@ -51,10 +54,10 @@ namespace Game.Core
                 RespondToThrustInput();
             }
 
-            if (Debug.isDebugBuild) 
-            { 
-                RespondToDebugKeys();
-            }
+            // if (Debug.isDebugBuild) 
+            // { 
+            //     RespondToDebugKeys();
+            // }
 
             PauseGame();
         }
@@ -69,6 +72,10 @@ namespace Game.Core
             {
                 collisionsDisabled = !collisionsDisabled;
             }
+            else if (Input.GetKeyDown(KeyCode.E))
+            {
+                hud.EggCollected();
+            }
         }
 
         void OnCollisionEnter(Collision collision)
@@ -79,6 +86,8 @@ namespace Game.Core
             switch (collision.gameObject.tag)
             {
                 case "Friendly":
+                    break;
+                case "PickUp":
                     break;
                 case "Finish":
                     StartWinSequence();
@@ -94,8 +103,6 @@ namespace Game.Core
             isTransitioning = true;
             audioSource.Stop();
             audioSource.PlayOneShot(win);
-            //winParticles.Play();
-            
             StartCoroutine(levelLoader.LoadSceneWithDelay());
         }
 

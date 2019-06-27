@@ -16,8 +16,12 @@ namespace Game.Core
 
         Vector3 startingPos;
         // Start is called before the first frame update
+
+        LevelLoader levelLoader;
+
         void Start()
         {
+            levelLoader = FindObjectOfType<LevelLoader>();
             startingPos = transform.position;
         }
 

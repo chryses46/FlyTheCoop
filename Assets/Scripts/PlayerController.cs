@@ -38,16 +38,16 @@ namespace Game.Control
                 RespondToThrustInput();
             }
 
-            if (Debug.isDebugBuild) 
-            { 
-                debugAgent.RespondToDebugKeys(); //Core
-            }
+            // if (Debug.isDebugBuild) 
+            // { 
+            //     debugAgent.RespondToDebugKeys(); //Core
+            // }
         }
 
          void OnCollisionEnter(Collision collision)
         {
 
-            if (effectsFactory.isTransitioning || debugAgent.collisionsDisabled) { return; }
+            if (effectsFactory.isTransitioning) { return; }
 
             switch (collision.gameObject.tag)
             {

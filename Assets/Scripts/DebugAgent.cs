@@ -7,17 +7,48 @@ namespace Game.Core
     public class DebugAgent: MonoBehaviour
     {
 // This class is a component of GameObject "System"
-        public bool collisionsDisabled = false;
         LevelLoader levelLoader;
-        public void RespondToDebugKeys() //Core
+        HUDController hud;
+        Chicken chicken;
+
+        void Start()
         {
-            if (Input.GetKeyDown(KeyCode.L)) 
+            levelLoader = GetComponent<LevelLoader>();
+
+        }
+
+        void Update()
+        {
+            if(Debug.isDebugBuild)
             {
-//                levelLoader.LoadNextScene();
+                RespondToDebugKeys();    
+            }
+            
+        }
+
+        private void RespondToDebugKeys()
+        {
+            if (Input.GetKeyDown(KeyCode.L))
+            {
+                levelLoader.NextScene();
             }
             else if (Input.GetKeyDown(KeyCode.C))
             {
-                collisionsDisabled = !collisionsDisabled;
+                chicken = FindObjectOfType<Chicken>();
+                if(chicken)
+                {
+                    chicken.collisionsDisabled = !chicken.collisionsDisabled;
+                }
+                
+            }
+            else if (Input.GetKeyDown(KeyCode.E))
+            {
+                if(!hud)
+                {
+                    hud = FindObjectOfType<HUDController>();
+                }
+                
+                hud.EggCollected();
             }
         }
     }

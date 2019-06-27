@@ -50,10 +50,13 @@ namespace Game.Core
         [SerializeField] Button controls;
         [SerializeField] Button version;
         public GameObject pauseScreen;
+        public GameObject hudGo;
 
         GameObject mainSpalsh;
 
         MusicPlayer music;
+
+        HUDController hud;
 
         void OnEnable()
         {
@@ -176,6 +179,7 @@ namespace Game.Core
         {
             SceneManager.LoadScene(0);
             music.PlayIntroMusic();
+            HUDEnabled(false);
             CurrentGameState = GameState.Menu;
             
             if(pauseScreen.activeSelf == true)
@@ -198,14 +202,24 @@ namespace Game.Core
         public void StartGame()
         {
             CurrentGameState = GameState.Play;
+            HUDEnabled(true);
+            hud.ResetScore();
             SceneManager.LoadScene(3);
             music.PlayGameMusic();
         }
 
-        public void GameWon()
+        public void HUDEnabled(bool enabled)
         {
-            SceneManager.LoadScene("WinScreen");
-            music.PlayWinMusic();
+            if(enabled)
+            {
+                hudGo.SetActive(true);
+                hud = hudGo.GetComponent<HUDController>();
+                hud.ResetScore();
+            }
+            else
+            {
+                hudGo.SetActive(false);
+            }
         }
 
         public void PauseScreenControl()
@@ -213,12 +227,10 @@ namespace Game.Core
 
             if(CurrentGameState == GameState.Pause)
             {
-                Debug.Log("Gamesate is paused and pause screen called.");
                 pauseScreen.SetActive(true);
 
             }else
             {
-                Debug.Log("Gamesate is Play and pause screen hidden.");
                 pauseScreen.SetActive(false);
                 int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
                 SceneManager.LoadScene(currentSceneIndex);
@@ -232,12 +244,15 @@ namespace Game.Core
             if(!winning && mode == GameMode.Hard)
             {
                 yield return new WaitForSeconds(levelLoadDelay);
+                hud.ResetLevelScore();
+                hud.ResetScore();
                 FirstScene();
                 
             }
             else if(!winning)
             {
                 yield return new WaitForSeconds(levelLoadDelay);
+                hud.ResetLevelScore();
                 ThisScene();
             }
 
@@ -257,7 +272,9 @@ namespace Game.Core
         public void NextScene()
         {
             int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
-
+            
+            hud.UpdateTotalScore();
+            
             //Reaches end of SceceCount (wins game) and goes to WinScreen
             if (currentSceneIndex == SceneManager.sceneCountInBuildSettings - 2)
             {
@@ -267,6 +284,13 @@ namespace Game.Core
             {
                 SceneManager.LoadScene(currentSceneIndex + 1);
             }
+        }
+
+        public void GameWon()
+        {
+            SceneManager.LoadScene("WinScreen");
+            hud.UpdateHighScore();
+            music.PlayWinMusic();
         }
 
         private void ThisScene()
