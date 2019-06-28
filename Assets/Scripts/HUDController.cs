@@ -11,7 +11,16 @@ namespace Game.Core
         
         [SerializeField] Text eggCountText;
 
+        [SerializeField] AudioClip collectEgg;
+
+        [SerializeField] int requiredModifier = 3;
+
         PlayerPrefConfig ppc;
+        AudioSource audioSource;
+
+        private int TotalEggsRequired { get; set; } // Increasing value for NormalMode play
+
+        const int levelOneRequiredEggs = 2; // const to base TotalEgg formula around
 
         private int LevelScore { get; set; }
         public int TotalScore { get; private set; }
@@ -19,11 +28,14 @@ namespace Game.Core
         void OnEnable()
         {
             ppc = FindObjectOfType<PlayerPrefConfig>();
+            audioSource = GetComponent<AudioSource>();
+
         }
 
         public void EggCollected()
         {
             Debug.Log("Egg Collected.");
+            audioSource.PlayOneShot(collectEgg);
             LevelScore += 1;
             eggCountText.text = (LevelScore + TotalScore).ToString();
         }
@@ -52,6 +64,15 @@ namespace Game.Core
         {
             LevelScore = 0;
             eggCountText.text = (LevelScore + TotalScore).ToString();
+        }
+
+        public void UpdateRequiredEggsCount(int currentLevelIndex)
+        {
+            TotalEggsRequired = levelOneRequiredEggs+currentLevelIndex * requiredModifier;
+
+            Debug.Log("Total Eggs Required: " + TotalEggsRequired);
+            Debug.Log("Total Score: " + TotalScore);
+            Debug.Log("Level Score: " + LevelScore);
         }
     }
 }

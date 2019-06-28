@@ -203,6 +203,7 @@ namespace Game.Core
             HUDEnabled(true);
             hud.ResetScore();
             SceneManager.LoadScene(3);
+            hud.UpdateRequiredEggsCount(0);
             music.PlayGameMusic();
         }
 
@@ -273,6 +274,7 @@ namespace Game.Core
             
             hud.UpdateTotalScore();
             
+
             //Reaches end of SceceCount (wins game) and goes to WinScreen
             if (currentSceneIndex == SceneManager.sceneCountInBuildSettings - 2)
             {
@@ -281,6 +283,8 @@ namespace Game.Core
             else //Loads the next scene
             {
                 SceneManager.LoadScene(currentSceneIndex + 1);
+
+                hud.UpdateRequiredEggsCount(currentSceneIndex - 2);
             }
         }
 
