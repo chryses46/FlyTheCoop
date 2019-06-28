@@ -13,9 +13,7 @@ namespace Game.Core
         {
             ManageHighScore();
         }
-
         
-
         public void ManageHighScore(int sessionScore = 0)
         {
             int prevHighScore = PlayerPrefs.GetInt("HighScore");

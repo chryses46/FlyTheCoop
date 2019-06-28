@@ -203,7 +203,6 @@ namespace Game.Core
             HUDEnabled(true);
             hud.ResetScore();
             SceneManager.LoadScene(3);
-            hud.UpdateRequiredEggsCount(0);
             music.PlayGameMusic();
         }
 
@@ -284,7 +283,11 @@ namespace Game.Core
             {
                 SceneManager.LoadScene(currentSceneIndex + 1);
 
-                hud.UpdateRequiredEggsCount(currentSceneIndex - 2);
+                if(CurrentGameMode == GameMode.Hard)
+                {
+                    hud.UpdateRequiredHardModeEggsCount(currentSceneIndex - 2);
+                }
+                
             }
         }
 

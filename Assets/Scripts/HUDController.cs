@@ -13,14 +13,32 @@ namespace Game.Core
 
         [SerializeField] AudioClip collectEgg;
 
-        [SerializeField] int requiredModifier = 3;
+        [SerializeField] int requiredModifier = 3; //for HardMode: a higher number means more eggs required to move forwar
 
         PlayerPrefConfig ppc;
         AudioSource audioSource;
+        LevelLoader levelLoader;
 
-        private int TotalEggsRequired { get; set; } // Increasing value for NormalMode play
+        //private int TotalEggsRequired { get; set; } // Increasing value for HardMode play
 
-        const int levelOneRequiredEggs = 2; // const to base TotalEgg formula around
+        const int initialRequired = 3; // const to base TotalEgg formula around
+
+        public GameObject FinishLine;
+
+        private int _requiredEggs;
+
+
+        public int RequiredEggs 
+        { 
+            get 
+            {
+                return _requiredEggs;
+            } 
+            set
+            {
+                _requiredEggs = value;
+            } 
+        }
 
         private int LevelScore { get; set; }
         public int TotalScore { get; private set; }
@@ -29,15 +47,49 @@ namespace Game.Core
         {
             ppc = FindObjectOfType<PlayerPrefConfig>();
             audioSource = GetComponent<AudioSource>();
+            levelLoader = FindObjectOfType<LevelLoader>();
 
         }
 
         public void EggCollected()
         {
-            Debug.Log("Egg Collected.");
             audioSource.PlayOneShot(collectEgg);
-            LevelScore += 1;
-            eggCountText.text = (LevelScore + TotalScore).ToString();
+            
+            if(levelLoader.CurrentGameMode == LevelLoader.GameMode.Hard)
+            {
+                TotalScore += 1;
+            }
+            else
+            {
+                LevelScore += 1;
+            }
+            
+            UpdateFinishLine();
+            UpdateEggCountText();
+        }
+
+        public void UpdateFinishLine(GameObject finish)
+        { 
+
+            FinishLine = finish;
+
+            FinishLine.tag = "Untagged"; // Disables the FinishLine
+            Debug.Log("FinishLine locked: " + FinishLine.tag);
+            
+        }
+
+        public void UpdateFinishLine()
+        {
+            if(levelLoader.CurrentGameMode == LevelLoader.GameMode.Hard && TotalScore >= _requiredEggs)
+            {
+                FinishLine.tag = "Finish";
+                Debug.Log("FinishLine unlocked: " + FinishLine.tag);
+            }
+            else if(LevelScore >= _requiredEggs)
+            {
+                FinishLine.tag = "Finish";
+                Debug.Log("FinishLine unlocked: " + FinishLine.tag);
+            }
         }
 
         public void UpdateTotalScore()
@@ -57,22 +109,47 @@ namespace Game.Core
         public void ResetScore()
         {
             TotalScore = 0;
-            eggCountText.text = TotalScore.ToString();
+
+            if(levelLoader.CurrentGameMode == LevelLoader.GameMode.Hard)
+            {
+                UpdateRequiredHardModeEggsCount(0);
+            } 
+            ResetLevelScore();
+            UpdateEggCountText();
         }
 
         public void ResetLevelScore()
         {
             LevelScore = 0;
-            eggCountText.text = (LevelScore + TotalScore).ToString();
+            UpdateEggCountText();
+            
         }
 
-        public void UpdateRequiredEggsCount(int currentLevelIndex)
+        public void UpdateEggCountText()
+        {   
+            if(levelLoader.CurrentGameMode == LevelLoader.GameMode.Hard)
+            {
+                eggCountText.text = (LevelScore + TotalScore) + "/" + _requiredEggs;
+            }
+            else
+            {
+                eggCountText.text = LevelScore + "/" + _requiredEggs;
+            }
+            
+        }
+
+        public void UpdateRequiredHardModeEggsCount(int currentLevelIndex)
         {
-            TotalEggsRequired = levelOneRequiredEggs+currentLevelIndex * requiredModifier;
+            if(currentLevelIndex >= 0)
+            {
+                RequiredEggs = initialRequired + currentLevelIndex * requiredModifier;
+                UpdateEggCountText();
+            }
 
-            Debug.Log("Total Eggs Required: " + TotalEggsRequired);
-            Debug.Log("Total Score: " + TotalScore);
-            Debug.Log("Level Score: " + LevelScore);
         }
+
+        
+
+        
     }
 }

@@ -6,13 +6,28 @@ using Game.Core;
 public class EggPickup : MonoBehaviour
 {
     HUDController hud;
+    LevelLoader LevelLoader;
 
-    // Start is called before the first frame update
+
+    public bool isHardModeEgg;
+
+    
+
     void Start()
     {
+        LevelLoader = FindObjectOfType<LevelLoader>();
         hud = FindObjectOfType<HUDController>();
+        IsThisHardMode(LevelLoader.CurrentGameMode);
     }
-    
+
+    private void IsThisHardMode(LevelLoader.GameMode mode)
+    {
+        if(isHardModeEgg && mode != LevelLoader.GameMode.Hard)
+        {
+            gameObject.SetActive(false);
+        }
+    }
+
     void OnTriggerEnter(Collider other)
     {
         if(other.tag == "Player")
