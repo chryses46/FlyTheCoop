@@ -47,6 +47,7 @@ namespace Game.Core
         [SerializeField] Button newGame;
         [SerializeField] Button controls;
         [SerializeField] Button version;
+        [SerializeField] Button levelSelect;
         public GameObject pauseScreen;
         public GameObject hudGo;
 
@@ -97,6 +98,7 @@ namespace Game.Core
                 newGame = mainSpalsh.transform.Find("New Game").gameObject.GetComponent<Button>();
                 controls = mainSpalsh.transform.Find("Controls").gameObject.GetComponent<Button>();
                 version = mainSpalsh.transform.Find("Version").gameObject.GetComponent<Button>();
+                levelSelect = mainSpalsh.transform.Find("LevelSelect").gameObject.GetComponent<Button>();
             }
 
             AddListeners();
@@ -107,6 +109,7 @@ namespace Game.Core
             newGame.onClick.AddListener(LoadModeScene);
             controls.onClick.AddListener(ShowControls);
             version.onClick.AddListener(ShowVersionInfo);
+            levelSelect.onClick.AddListener(LoadLevelSelect);
         }
 
         #region versionInfo
@@ -188,21 +191,35 @@ namespace Game.Core
 
         public void ShowControls()
         {
-            SceneManager.LoadScene(1);
+            SceneManager.LoadScene("Controls");
         }
 
         public void LoadModeScene() // SceneLoader
         {
-            SceneManager.LoadScene(2);
+            SceneManager.LoadScene("ModeSelect");
             music.PlayIntroMusic();
         }
 
-        public void StartGame()
+        public void LoadLevelSelect()
+        {
+            SceneManager.LoadScene("LevelSelect");
+            music.PlayIntroMusic();
+        }
+
+        public void StartGame(string name = null)
         {
             CurrentGameState = GameState.Play;
+            
+            if(name != null)
+            {
+                SceneManager.LoadScene(name);
+            }
+            else
+            {
+                SceneManager.LoadScene(3);    
+            }
             HUDEnabled(true);
-            hud.ResetScore();
-            SceneManager.LoadScene(3);
+            //hud.ResetScore();
             music.PlayGameMusic();
         }
 
@@ -315,5 +332,11 @@ namespace Game.Core
             }
             
         }
+        // Intended for LevelSelect screen
+        public void SelectLevel(string name)
+        {
+            CurrentGameMode = LevelLoader.GameMode.Normal;
+            StartGame(name);
+        } 
     }
 }

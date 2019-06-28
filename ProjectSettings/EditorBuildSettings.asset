@@ -6,30 +6,33 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Intro Spash/Intro Splash.unity
+    path: Assets/Scenes/Intro Spash/IntroSplash.unity
     guid: ededef7cc8a02f9488ca7d414ab9dbc6
   - enabled: 1
     path: Assets/Scenes/Controls/Controls.unity
     guid: 8a6f6b8ba9059b440931e2004c2e53ed
   - enabled: 1
-    path: Assets/Scenes/Mode Select/Mode Select.unity
+    path: Assets/Scenes/Mode Select/ModeSelect.unity
     guid: 00e6bdfb43217804582e0337f87b2133
   - enabled: 1
-    path: Assets/Scenes/Level1/Level1.unity
+    path: Assets/Scenes/Level1/The Coop.unity
     guid: e9d61d3652d71e94dbcd931c1668f830
   - enabled: 1
-    path: Assets/Scenes/Level2/Level2.unity
+    path: Assets/Scenes/Level2/The Other Side.unity
     guid: 3ee68be0bd21e8f4db02085d16d8422f
   - enabled: 1
-    path: Assets/Scenes/Level3/Level3.unity
+    path: Assets/Scenes/Level3/Storage.unity
     guid: 558c17a3db94645239b9171825111220
   - enabled: 1
-    path: Assets/Scenes/Level4/Level4.unity
+    path: Assets/Scenes/Level4/Factory.unity
     guid: 225256bcc293c4029ae9f34be1d4882b
   - enabled: 1
-    path: Assets/Scenes/Level5/Level5.unity
+    path: Assets/Scenes/Level5/Garage.unity
     guid: 0d140a550d7004ee2b865ed9e7c1a3c6
   - enabled: 1
     path: Assets/Scenes/WinScreen/WinScreen.unity
     guid: 0eeb0f7f1dcaa5f4cb40b41d00551c4b
+  - enabled: 1
+    path: Assets/Scenes/LevelSelect/LevelSelect.unity
+    guid: bd101bfcfd71c4d13af42bf95b873496
   m_configObjects: {}

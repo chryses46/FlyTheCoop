@@ -570,6 +570,7 @@ MonoBehaviour:
   newGame: {fileID: 0}
   controls: {fileID: 0}
   version: {fileID: 0}
+  levelSelect: {fileID: 0}
   pauseScreen: {fileID: 2408548296827676297}
   hudGo: {fileID: 6501060676982053690}
 --- !u!114 &769145135193652470
@@ -1006,6 +1007,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4228677143948552738, guid: c617e42384426854cb24aef3ba45b470,
+        type: 3}
+      propertyPath: m_Text
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 4929462269512343447, guid: c617e42384426854cb24aef3ba45b470,
         type: 3}
       propertyPath: eggCountText
@@ -1031,11 +1037,6 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0.040100098
       objectReference: {fileID: 0}
-    - target: {fileID: 4228677143948552738, guid: c617e42384426854cb24aef3ba45b470,
-        type: 3}
-      propertyPath: m_Text
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 2086870520380499593, guid: c617e42384426854cb24aef3ba45b470,
         type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -1048,18 +1049,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c617e42384426854cb24aef3ba45b470, type: 3}
---- !u!4 &6501060676982053691 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4228677143273007904, guid: c617e42384426854cb24aef3ba45b470,
-    type: 3}
-  m_PrefabInstance: {fileID: 6960083738770239515}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &6501060676982053690 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4228677143273007905, guid: c617e42384426854cb24aef3ba45b470,
-    type: 3}
-  m_PrefabInstance: {fileID: 6960083738770239515}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &6501060677380250169 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4228677143948552738, guid: c617e42384426854cb24aef3ba45b470,
@@ -1072,3 +1061,15 @@ MonoBehaviour:
   m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!4 &6501060676982053691 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4228677143273007904, guid: c617e42384426854cb24aef3ba45b470,
+    type: 3}
+  m_PrefabInstance: {fileID: 6960083738770239515}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &6501060676982053690 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4228677143273007905, guid: c617e42384426854cb24aef3ba45b470,
+    type: 3}
+  m_PrefabInstance: {fileID: 6960083738770239515}
+  m_PrefabAsset: {fileID: 0}
