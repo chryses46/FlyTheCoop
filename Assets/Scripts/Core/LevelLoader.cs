@@ -100,6 +100,18 @@ namespace FlyTheCoop.Core
             version.onClick.AddListener(ShowVersionInfo);
             levelSelect.onClick.AddListener(LoadLevelSelect);
         }
+
+        private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+        {
+            int loadedSceneIndex = scene.buildIndex;
+
+            if(loadedSceneIndex == 0)
+            {
+                CurrentGameState = GameState.Menu;
+                PopulateButtons();
+            }
+        }
+
 #endregion
 #region VersionInfo
         void HideVersionInfoOnClickAway()
@@ -301,16 +313,7 @@ namespace FlyTheCoop.Core
             }
         }
 #endregion
-        private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
-        {
-            int loadedSceneIndex = scene.buildIndex;
-
-            if(loadedSceneIndex == 0)
-            {
-                CurrentGameState = GameState.Menu;
-                PopulateButtons();
-            }
-        }
+        
         private void ThereCanOnlyBeOne()
         {
             int numLevelLoaders = FindObjectsOfType<LevelLoader>().Length;
