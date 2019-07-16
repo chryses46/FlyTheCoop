@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1878967757490232074}
   - component: {fileID: 1878967757490232075}
   - component: {fileID: 1878967757490232072}
-  - component: {fileID: 1878967757490232073}
+  - component: {fileID: 3104605226951600101}
   m_Layer: 0
   m_Name: Chicken_v3
   m_TagString: Friendly
@@ -213,7 +213,7 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &1878967757490232073
+--- !u!114 &3104605226951600101
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -222,7 +222,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1878967757490232078}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8aeee7811aa6c4c7eab84d83720f0f3c, type: 3}
+  m_Script: {fileID: 11500000, guid: 333a96b38f4aa4fdfbc1de578d4a2967, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   rcsThrust: 175
@@ -234,6 +234,7 @@ MonoBehaviour:
   flyingChickenParticles: {fileID: 8103079615333046162}
   deathParticles: {fileID: 814962890902467861}
   isTransitioning: 0
+  collisionsDisabled: 0
 --- !u!1 &2274575289289425704
 GameObject:
   m_ObjectHideFlags: 0

@@ -398,6 +398,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &860314356 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6501060676982053690, guid: 362633441972da44db4366abc3afb138,
+    type: 3}
+  m_PrefabInstance: {fileID: 769145135193652467}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1545596229 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 9160726452766539651, guid: 41016de674668d042a77769eae62a191,
@@ -410,18 +416,12 @@ MonoBehaviour:
   m_Script: {fileID: 1392445389, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1749343529 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 769145135165579066, guid: 362633441972da44db4366abc3afb138,
+--- !u!1 &1876673540 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2408548296827676297, guid: 362633441972da44db4366abc3afb138,
     type: 3}
   m_PrefabInstance: {fileID: 769145135193652467}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5b8251747e66621499e66cab1a170484, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1980627692 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1014784877, guid: 41016de674668d042a77769eae62a191,
@@ -546,6 +546,36 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6347510938559298467, guid: 362633441972da44db4366abc3afb138,
+        type: 3}
+      propertyPath: newGame
+      value: 
+      objectReference: {fileID: 1545596229}
+    - target: {fileID: 6347510938559298467, guid: 362633441972da44db4366abc3afb138,
+        type: 3}
+      propertyPath: controls
+      value: 
+      objectReference: {fileID: 451408449}
+    - target: {fileID: 6347510938559298467, guid: 362633441972da44db4366abc3afb138,
+        type: 3}
+      propertyPath: version
+      value: 
+      objectReference: {fileID: 113679271}
+    - target: {fileID: 6347510938559298467, guid: 362633441972da44db4366abc3afb138,
+        type: 3}
+      propertyPath: levelSelect
+      value: 
+      objectReference: {fileID: 1980627692}
+    - target: {fileID: 6347510938559298467, guid: 362633441972da44db4366abc3afb138,
+        type: 3}
+      propertyPath: pauseScreen
+      value: 
+      objectReference: {fileID: 1876673540}
+    - target: {fileID: 6347510938559298467, guid: 362633441972da44db4366abc3afb138,
+        type: 3}
+      propertyPath: hudGo
+      value: 
+      objectReference: {fileID: 860314356}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 362633441972da44db4366abc3afb138, type: 3}
 --- !u!1001 &9160726451491934918
@@ -584,7 +614,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1749343529}
+      objectReference: {fileID: 0}
     - target: {fileID: 1014784877, guid: 41016de674668d042a77769eae62a191, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
       value: 0
@@ -722,7 +752,7 @@ PrefabInstance:
     - target: {fileID: 1485387382, guid: 41016de674668d042a77769eae62a191, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1749343529}
+      objectReference: {fileID: 0}
     - target: {fileID: 99354035, guid: 41016de674668d042a77769eae62a191, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
       value: 0
@@ -730,7 +760,7 @@ PrefabInstance:
     - target: {fileID: 99354035, guid: 41016de674668d042a77769eae62a191, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1749343529}
+      objectReference: {fileID: 0}
     - target: {fileID: 99354035, guid: 41016de674668d042a77769eae62a191, type: 3}
       propertyPath: m_Colors.m_HighlightedColor.r
       value: 0.9056604
