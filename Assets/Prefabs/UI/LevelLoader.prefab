@@ -571,6 +571,7 @@ MonoBehaviour:
   controls: {fileID: 0}
   version: {fileID: 0}
   levelSelect: {fileID: 0}
+  pauseButton: {fileID: 2140300094686328824}
   pauseScreen: {fileID: 2408548296827676297}
   hudGo: {fileID: 6501060676982053690}
 --- !u!114 &769145135193652470
@@ -952,6 +953,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: HUD
       objectReference: {fileID: 0}
+    - target: {fileID: 4228677143273007905, guid: c617e42384426854cb24aef3ba45b470,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4228677143273007904, guid: c617e42384426854cb24aef3ba45b470,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1007,11 +1013,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4228677143948552738, guid: c617e42384426854cb24aef3ba45b470,
-        type: 3}
-      propertyPath: m_Text
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 4929462269512343447, guid: c617e42384426854cb24aef3ba45b470,
         type: 3}
       propertyPath: eggCountText
@@ -1021,12 +1022,7 @@ PrefabInstance:
         type: 3}
       propertyPath: collectEgg
       value: 
-      objectReference: {fileID: 8300000, guid: 6a004e3ebb319e54bbbf183103887af3, type: 3}
-    - target: {fileID: 2793714955491669776, guid: c617e42384426854cb24aef3ba45b470,
-        type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -0.32000732
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 8300000, guid: aa1d072400e2f4f4cb7699eb1522206c, type: 3}
     - target: {fileID: 4228677143948552739, guid: c617e42384426854cb24aef3ba45b470,
         type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -1037,15 +1033,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0.040100098
       objectReference: {fileID: 0}
-    - target: {fileID: 2086870520380499593, guid: c617e42384426854cb24aef3ba45b470,
+    - target: {fileID: 4228677143948552738, guid: c617e42384426854cb24aef3ba45b470,
         type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: -0.15002441
-      objectReference: {fileID: 0}
-    - target: {fileID: 2086870520380499593, guid: c617e42384426854cb24aef3ba45b470,
-        type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0.97250366
+      propertyPath: m_Text
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c617e42384426854cb24aef3ba45b470, type: 3}
@@ -1073,3 +1064,15 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 6960083738770239515}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2140300094686328824 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9017597131671472099, guid: c617e42384426854cb24aef3ba45b470,
+    type: 3}
+  m_PrefabInstance: {fileID: 6960083738770239515}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1392445389, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

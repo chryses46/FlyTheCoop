@@ -48,6 +48,8 @@ namespace Game.Core
         [SerializeField] Button controls;
         [SerializeField] Button version;
         [SerializeField] Button levelSelect;
+        [SerializeField] Button pauseButton;
+        [SerializeField] Button testButton;
         public GameObject pauseScreen;
         public GameObject hudGo;
 
@@ -110,6 +112,8 @@ namespace Game.Core
             controls.onClick.AddListener(ShowControls);
             version.onClick.AddListener(ShowVersionInfo);
             levelSelect.onClick.AddListener(LoadLevelSelect);
+            pauseButton.onClick.AddListener(PauseScreenControl);
+            testButton.onClick.AddListener(TestTimeFreeze);
         }
 
         #region versionInfo
@@ -196,6 +200,7 @@ namespace Game.Core
 
         public void LoadModeScene() // SceneLoader
         {
+            Debug.Log("LoadModeSecen button tapped");
             SceneManager.LoadScene("ModeSelect");
             music.PlayIntroMusic();
         }
@@ -239,6 +244,8 @@ namespace Game.Core
 
         public void PauseScreenControl()
         {
+
+            Debug.Log("PauseButton clicked");
 
             if(CurrentGameState == GameState.Pause)
             {
@@ -340,5 +347,20 @@ namespace Game.Core
             CurrentGameMode = LevelLoader.GameMode.Normal;
             StartGame(name);
         } 
+
+        public void TestTimeFreeze()
+        {
+            if(Time.timeScale == 1f)
+                {
+                    Time.timeScale = 0f;
+                    Debug.Log(Time.timeScale);
+                }
+                else
+                {
+                    Time.timeScale = 1f;
+                    Debug.Log(Time.timeScale);
+                }
+        }
+
     }
 }

@@ -434,6 +434,18 @@ MonoBehaviour:
   m_Script: {fileID: 1392445389, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2035454352 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6233731136803783681, guid: 362633441972da44db4366abc3afb138,
+    type: 3}
+  m_PrefabInstance: {fileID: 769145135193652467}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1392445389, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &769145135193652467
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -466,6 +478,11 @@ PrefabInstance:
       propertyPath: levelSelect
       value: 
       objectReference: {fileID: 1980627692}
+    - target: {fileID: 769145135165579066, guid: 362633441972da44db4366abc3afb138,
+        type: 3}
+      propertyPath: testButton
+      value: 
+      objectReference: {fileID: 2035454352}
     - target: {fileID: 769145135165579065, guid: 362633441972da44db4366abc3afb138,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -519,31 +536,6 @@ PrefabInstance:
     - target: {fileID: 769145135165579065, guid: 362633441972da44db4366abc3afb138,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6501060676982053690, guid: 362633441972da44db4366abc3afb138,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2666087659753320332, guid: 362633441972da44db4366abc3afb138,
-        type: 3}
-      propertyPath: collectEgg
-      value: 
-      objectReference: {fileID: 8300000, guid: aa1d072400e2f4f4cb7699eb1522206c, type: 3}
-    - target: {fileID: 2666087659753320332, guid: 362633441972da44db4366abc3afb138,
-        type: 3}
-      propertyPath: requiredModifier
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 2666087659753320332, guid: 362633441972da44db4366abc3afb138,
-        type: 3}
-      propertyPath: levelModifier
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 6501060676072785682, guid: 362633441972da44db4366abc3afb138,
-        type: 3}
-      propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
