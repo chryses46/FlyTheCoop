@@ -290,9 +290,10 @@ namespace Game.Core
             
             hud.UpdateTotalScore();
             
+            Debug.Log(SceneManager.sceneCountInBuildSettings);
 
             //Reaches end of SceceCount (wins game) and goes to WinScreen
-            if (currentSceneIndex == SceneManager.sceneCountInBuildSettings - 2)
+            if (currentSceneIndex == SceneManager.sceneCountInBuildSettings - 3)
             {
                 GameWon();
             }
@@ -310,6 +311,7 @@ namespace Game.Core
 
         public void GameWon()
         {
+            Debug.Log("GameWon called");
             SceneManager.LoadScene("WinScreen");
             hud.UpdateHighScore();
             music.PlayWinMusic();

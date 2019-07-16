@@ -7,7 +7,7 @@ using Game.Core;
 public class WinScreen : MonoBehaviour
 {
     [SerializeField] Text normalModeText;
-    [SerializeField] Text hardModeText;
+    [SerializeField] List<Text> hardModeUIText;
     [SerializeField] Text eggsCollected;
     [SerializeField] Text mostEggsCollected;
     [SerializeField] Button newGame;
@@ -32,7 +32,7 @@ public class WinScreen : MonoBehaviour
     {
         if (levelLoader.CurrentGameMode == LevelLoader.GameMode.Hard)
         {
-            EnableHardModeText();
+            EnableHardModeUIText();
         }
         else
         {
@@ -45,14 +45,16 @@ public class WinScreen : MonoBehaviour
         normalModeText.gameObject.SetActive(true);
     }
 
-    private void EnableHardModeText()
+    private void EnableHardModeUIText()
     {
-        hardModeText.gameObject.SetActive(true);
+        for(int i=0; i< hardModeUIText.Count; i++)
+        {
+            hardModeUIText[i].gameObject.SetActive(true);
+        }
     }
 
     private void SetEggsCollectedText()
     {
-        //Debug.Log("TotalScore: " + (hud.TotalScore).ToString();
         eggsCollected.text = "Eggs Collected: " + hud.TotalScore;
     }
 

@@ -28,6 +28,7 @@ namespace Game.Core
 
         public void PlayWinMusic()
         {
+            Debug.Log("PlayWinMusic called");
             if(audioSource)
             {
                 audioSource.clip = winMusic;
