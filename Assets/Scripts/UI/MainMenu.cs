@@ -15,7 +15,7 @@ namespace FlyTheCoop.UI
 #region Startup
         public void OnEnable()
         {
-            levelLoader = GameObject.Find("GameController").GetComponent<LevelLoader>();
+            levelLoader = FindObjectOfType<LevelLoader>();
             mainMenu.onClick.AddListener(CallMainMenu);
         }
 #endregion

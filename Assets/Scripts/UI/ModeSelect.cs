@@ -25,13 +25,11 @@ namespace FlyTheCoop.UI
 
         private void SetHardMode()
         {
-            levelLoader.CurrentGameMode = LevelLoader.GameMode.Hard;
-            levelLoader.StartGame();
+            levelLoader.StartGame(LevelLoader.GameMode.Hard);
         }
         private void SetNormalMode()
         {
-            levelLoader.CurrentGameMode = LevelLoader.GameMode.Normal;
-            levelLoader.StartGame();
+            levelLoader.StartGame(LevelLoader.GameMode.Normal);
         }
     }
 }

@@ -186,19 +186,20 @@ namespace FlyTheCoop.Core
             SceneManager.LoadScene("ModeSelect");
             music.PlayIntroMusic();
         }
-        private void LoadLevelSelect()
+        private void LoadLevelSelect() //for future release
         {
             SceneManager.LoadScene("LevelSelect");
             music.PlayIntroMusic();
         }
-        public void SelectLevel(string name)
+        public void SelectLevel(string name) //for future release
         {
-            CurrentGameMode = LevelLoader.GameMode.Normal;
-            StartGame(name);
+            StartGame(GameMode.Normal, name);
         }
-        public void StartGame(string name = null)
+        public void StartGame(GameMode mode, string name = null)
         {
             CurrentGameState = GameState.Play;
+            
+            CurrentGameMode = mode;
             
             if(name != null)
             {
@@ -225,8 +226,6 @@ namespace FlyTheCoop.Core
             int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
             
             hud.UpdateTotalScore();
-            
-            Debug.Log(SceneManager.sceneCountInBuildSettings);
 
             //Reaches end of SceceCount (wins game) and goes to WinScreen
             if (currentSceneIndex == SceneManager.sceneCountInBuildSettings - 3)

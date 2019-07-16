@@ -14,19 +14,19 @@ namespace FlyTheCoop.Mechanics
 #endregion        
 #region TypeReferences
         HUDController hud;
-        LevelLoader LevelLoader;
+        LevelLoader levelLoader;
 #endregion
 #region Startup
         void Start()
         {
-            LevelLoader = FindObjectOfType<LevelLoader>();
+            levelLoader = FindObjectOfType<LevelLoader>();
             hud = FindObjectOfType<HUDController>();
-            IsThisHardMode(LevelLoader.CurrentGameMode);
+            IsThisHardMode();
         }
 #endregion
-        private void IsThisHardMode(LevelLoader.GameMode mode)
+        private void IsThisHardMode()
         {
-            if(isHardModeEgg && mode != LevelLoader.GameMode.Hard)
+            if(isHardModeEgg && levelLoader.CurrentGameMode != LevelLoader.GameMode.Hard)
             {
                 gameObject.SetActive(false);
             }

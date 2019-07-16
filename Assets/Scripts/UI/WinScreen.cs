@@ -13,7 +13,6 @@ namespace FlyTheCoop.UI
         [SerializeField] List<Text> hardModeUIText;
         [SerializeField] Text eggsCollected;
         [SerializeField] Text mostEggsCollected;
-        [SerializeField] Button newGame;
 #endregion
 #region TypeReferences
         LevelLoader levelLoader;
@@ -29,13 +28,13 @@ namespace FlyTheCoop.UI
             DetermineText();
             SetEggsCollectedText();
             SetMostEggsText();
-            levelLoader.HUDEnabled(false);
-            newGame.onClick.AddListener(CallNewGame);
         }
 #endregion
 
         private void DetermineText()
         {
+            levelLoader.HUDEnabled(false);
+
             if (levelLoader.CurrentGameMode == LevelLoader.GameMode.Hard)
             {
                 EnableHardModeUIText();
@@ -67,11 +66,6 @@ namespace FlyTheCoop.UI
         private void SetMostEggsText()
         {
             mostEggsCollected.text = "Most Eggs Collected: " + ppc.HighScore;
-        }
-
-        private void CallNewGame()
-        {
-            levelLoader.LoadModeScene();
         }
     }
 }
