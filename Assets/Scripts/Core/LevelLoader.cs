@@ -8,210 +8,118 @@ namespace FlyTheCoop.Core
 {
     public class LevelLoader : MonoBehaviour
     {
-#region Enums
-    #region GameMode
-            //Enum for game mode
-            public enum GameMode
-            {
-                Normal,
-                Hard
-            }
-        
-            private GameMode _gameMode;
-
-            public GameMode CurrentGameMode
-            {
-                get{ return _gameMode; }
-                set{ _gameMode = value; } 
-            }
-    #endregion
-    #region GameState
-            //Enum for gameState
-
-            public enum GameState
-            {
-                Menu,
-                Play,
-                Pause
-            }
-
-            private GameState _gameState;
-            public GameState CurrentGameState
-            {
-                get{ return _gameState;}
-                set{ _gameState = value;}
-            }
-    #endregion
-#endregion
 #region PublicProperties
         public float levelLoadDelay = 2f;
-        [SerializeField] Button newGame;
-        [SerializeField] Button controls;
-        [SerializeField] Button version;
-        [SerializeField] Button levelSelect;
-        public GameObject pauseScreen;
-        public GameObject hudGo;
-        GameObject mainSpalsh;
+        // [SerializeField] Button newGame;
+        // [SerializeField] Button controls;
+    
+        // [SerializeField] Button levelSelect;
+        // public GameObject pauseScreen;
+        // public GameObject hudGo;
+        // GameObject mainSpalsh;
 #endregion
 #region TypeReferences
         MusicPlayer music;
-        HUDController hud;
+        //HUDController hud;
+        StateController state;
+        UIController ui;
 #endregion
 #region Startup
-        void OnEnable()
-        {
-            SceneManager.sceneLoaded += OnSceneLoaded;
-        }
+        // void OnEnable()
+        // {
+        //     SceneManager.sceneLoaded += OnSceneLoaded;
+        // }
 
         public void Start()
         {
-            AddListeners();
+            //AddListeners();
             ThereCanOnlyBeOne();
             music = GetComponent<MusicPlayer>();
+            state = GetComponent<StateController>();
+            ui = GetComponent<UIController>();
         }
 
         void Update()
         {
             if(SceneManager.GetActiveScene().buildIndex == 0)
             {
-                HideVersionInfoOnClickAway();
+                //HideVersionInfoOnClickAway();
             }
         }
 #endregion
 #region ManageButtons
-        private void PopulateButtons()
-        {
-            if(!newGame & !controls & !version)
-            {
-                mainSpalsh = GameObject.Find("MainSplashCanvas");
-                newGame = mainSpalsh.transform.Find("New Game").gameObject.GetComponent<Button>();
-                controls = mainSpalsh.transform.Find("Controls").gameObject.GetComponent<Button>();
-                version = mainSpalsh.transform.Find("Version").gameObject.GetComponent<Button>();
-                levelSelect = mainSpalsh.transform.Find("LevelSelect").gameObject.GetComponent<Button>();
-            }
+        // private void PopulateButtons()
+        // {
+        //     if(!newGame & !controls)
+        //     {
+        //         mainSpalsh = GameObject.Find("MainSplashCanvas");
+        //         newGame = mainSpalsh.transform.Find("New Game").gameObject.GetComponent<Button>();
+        //         controls = mainSpalsh.transform.Find("Controls").gameObject.GetComponent<Button>();
+        //         levelSelect = mainSpalsh.transform.Find("LevelSelect").gameObject.GetComponent<Button>();
+        //     }
 
-            AddListeners();
-        }
+        //     AddListeners();
+        // }
 
-        private void AddListeners()
-        {
-            newGame.onClick.AddListener(LoadModeScene);
-            controls.onClick.AddListener(ShowControls);
-            version.onClick.AddListener(ShowVersionInfo);
-            levelSelect.onClick.AddListener(LoadLevelSelect);
-        }
+        // private void AddListeners()
+        // {
+        //     newGame.onClick.AddListener(LoadModeScene);
+        //     controls.onClick.AddListener(ShowControls);
+        //     levelSelect.onClick.AddListener(LoadLevelSelect);
+        // }
 
-        private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
-        {
-            int loadedSceneIndex = scene.buildIndex;
+        // private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+        // {
+        //     int loadedSceneIndex = scene.buildIndex;
 
-            if(loadedSceneIndex == 0)
-            {
-                CurrentGameState = GameState.Menu;
-                PopulateButtons();
-            }
-        }
+        //     if(loadedSceneIndex == 0)
+        //     {
+        //         StateController sc;
+        //         sc = GetComponent<StateController>();
+        //         sc.CurrentGameState = StateController.GameState.Menu;
+        //         PopulateButtons();
+        //     }
+        // }
 
-#endregion
-#region VersionInfo
-        void HideVersionInfoOnClickAway()
-        {
-            if(Input.GetMouseButtonDown(0)){
-                RaycastHit hit;
-                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-
-                if (Physics.Raycast( ray,out hit, 10000))
-                {
-                    string name = hit.collider.transform.name;
-
-                    if(name != "VersionInfo"){
-                        
-                        HideVersionInfo();
-                    }
-                }else if(Input.GetKeyDown(KeyCode.Escape))
-                {
-                    HideVersionInfo();
-                }
-            }
-        }
-
-        private void ShowVersionInfo()
-        {
-            GameObject versionInfoGo = GameObject.Find("VersionInfo");
-            string name = versionInfoGo.name;
-            float yStart = versionInfoGo.GetComponent<RectTransform>().localPosition.y;
-
-            if(yStart == 1000)
-            {
-                float yEnd = 0;
-               StartCoroutine(MoveObject(versionInfoGo, yStart, yEnd));
-                
-            }
-        }
-
-        private void HideVersionInfo()
-        {
-            GameObject versionInfoGo = GameObject.Find("VersionInfo");
-            string name = versionInfoGo.name;
-            float yStart = versionInfoGo.GetComponent<RectTransform>().localPosition.y;
-
-            if(yStart == 0)
-            {
-                float yEnd = 1000;
-               StartCoroutine(MoveObject(versionInfoGo, yStart, yEnd));
-                
-            }
-        }
-        
-        IEnumerator MoveObject(GameObject go, float start, float end)
-        {
-            RectTransform goRect = go.GetComponent<RectTransform>();
-            float t = 0.0f;
-
-            while(t < 1)
-            {
-                t += Time.deltaTime / .5f;
-                goRect.localPosition = new Vector2(0,Mathf.Lerp(start,end,t));
-                yield return null;
-            }
-        }
 #endregion
 #region SceneNavigation
         public void LoadMainMenu()
         {
             SceneManager.LoadScene(0);
             music.PlayIntroMusic();
-            HUDEnabled(false);
-            CurrentGameState = GameState.Menu;
+            ui.HUDEnabled(false);
+            state.CurrentGameState = StateController.GameState.Menu;
             
-            if(pauseScreen.activeSelf == true)
-            {
-                pauseScreen.SetActive(false);
-            }   
+            ui.PauseScreenControl(false);
+
+            // if(ui.pauseScreen.activeSelf == true)
+            // {
+            //     ui.pauseScreen.SetActive(false);
+            // }   
         }
-        private void ShowControls()
-        {
-            SceneManager.LoadScene("Controls");
-        }
+        // public void LoadControls()
+        // {
+        //     SceneManager.LoadScene("Controls");
+        // }
         public void LoadModeScene()
         {
             SceneManager.LoadScene("ModeSelect");
             music.PlayIntroMusic();
         }
-        private void LoadLevelSelect() //for future release
+        public void LoadLevelSelect() //for future release
         {
             SceneManager.LoadScene("LevelSelect");
             music.PlayIntroMusic();
         }
         public void SelectLevel(string name) //for future release
         {
-            StartGame(GameMode.Normal, name);
+            StartGame(StateController.GameMode.Normal, name);
         }
-        public void StartGame(GameMode mode, string name = null)
+        public void StartGame(StateController.GameMode mode, string name = null)
         {
-            CurrentGameState = GameState.Play;
+            state.CurrentGameState = StateController.GameState.Play;
             
-            CurrentGameMode = mode;
+            state.CurrentGameMode = mode;
             
             if(name != null)
             {
@@ -221,7 +129,7 @@ namespace FlyTheCoop.Core
             {
                 SceneManager.LoadScene(3);    
             }
-            HUDEnabled(true);
+            ui.HUDEnabled(true);
             music.PlayGameMusic();
         }
         private void FirstScene()
@@ -237,7 +145,7 @@ namespace FlyTheCoop.Core
         {
             int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
             
-            hud.UpdateTotalScore();
+//Eggmanager          hud.UpdateTotalScore();
 
             //Reaches end of SceceCount (wins game) and goes to WinScreen
             if (currentSceneIndex == SceneManager.sceneCountInBuildSettings - 3)
@@ -248,9 +156,9 @@ namespace FlyTheCoop.Core
             {
                 SceneManager.LoadScene(currentSceneIndex + 1);
 
-                if(CurrentGameMode == GameMode.Hard)
+                if(state.CurrentGameMode == StateController.GameMode.Hard)
                 {
-                    hud.UpdateRequiredHardModeEggsCount(currentSceneIndex - 2);
+//Eggmanager                    hud.UpdateRequiredHardModeEggsCount(currentSceneIndex - 2);
                 }
             }
         }
@@ -258,22 +166,22 @@ namespace FlyTheCoop.Core
         {
             Debug.Log("GameWon called");
             SceneManager.LoadScene("WinScreen");
-            hud.UpdateHighScore();
+//Eggmanager            hud.UpdateHighScore();
             music.PlayWinMusic();
         }
-        public IEnumerator LoadSceneWithDelay(GameMode mode = GameMode.Normal, bool winning = true) // SceneLoader
+        public IEnumerator LoadSceneWithDelay(StateController.GameMode mode = StateController.GameMode.Normal, bool winning = true) // SceneLoader
         {
-            if(!winning && mode == GameMode.Hard)
+            if(!winning && mode == StateController.GameMode.Hard)
             {
                 yield return new WaitForSeconds(levelLoadDelay);
-                hud.ResetLevelScore();
-                hud.ResetScore();
+//Eggmanager                hud.ResetLevelScore();
+//Eggmanager                hud.ResetScore();
                 FirstScene();
             }
             else if(!winning)
             {
                 yield return new WaitForSeconds(levelLoadDelay);
-                hud.ResetLevelScore();
+//Eggmanager                hud.ResetLevelScore();
                 ThisScene();
             }
 
@@ -286,32 +194,32 @@ namespace FlyTheCoop.Core
         }
 #endregion
 #region UIControl
-        public void HUDEnabled(bool enabled)
-        {
-            if(enabled)
-            {
-                hudGo.SetActive(true);
-                hud = hudGo.GetComponent<HUDController>();
-                hud.ResetScore();
-            }
-            else
-            {
-                hudGo.SetActive(false);
-            }
-        }
-        public void PauseScreenControl()
-        {
-            if(CurrentGameState == GameState.Pause)
-            {
-                pauseScreen.SetActive(true);
+        // public void HUDEnabled(bool enabled)
+        // {
+        //     if(enabled)
+        //     {
+        //         hudGo.SetActive(true);
+        //         hud = hudGo.GetComponent<HUDController>();
+        //         hud.ResetScore();
+        //     }
+        //     else
+        //     {
+        //         hudGo.SetActive(false);
+        //     }
+        // }
+        // public void PauseScreenControl()
+        // {
+        //     if(state.CurrentGameState == StateController.GameState.Pause)
+        //     {
+        //         pauseScreen.SetActive(true);
 
-            }else
-            {
-                pauseScreen.SetActive(false);
-                int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
-                SceneManager.LoadScene(currentSceneIndex);
-            }
-        }
+        //     }else
+        //     {
+        //         pauseScreen.SetActive(false);
+        //         int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+        //         SceneManager.LoadScene(currentSceneIndex);
+        //     }
+        // }
 #endregion
         
         private void ThereCanOnlyBeOne()

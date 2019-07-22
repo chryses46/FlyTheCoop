@@ -16,15 +16,19 @@ namespace FlyTheCoop.UI
 #endregion
 #region TypeReferences
         LevelLoader levelLoader;
+        UIController ui;
         HUDController hud;
         PlayerPrefConfig ppc;
+        StateController state;
 #endregion
 #region Startup
         void Start()
         {
             levelLoader = FindObjectOfType<LevelLoader>();
+            ui = FindObjectOfType<UIController>();
             hud = FindObjectOfType<HUDController>();
             ppc = FindObjectOfType<PlayerPrefConfig>();
+            state = FindObjectOfType<StateController>();
             DetermineText();
             SetEggsCollectedText();
             SetMostEggsText();
@@ -33,9 +37,9 @@ namespace FlyTheCoop.UI
 
         private void DetermineText()
         {
-            levelLoader.HUDEnabled(false);
+            ui.HUDEnabled(false);
 
-            if (levelLoader.CurrentGameMode == LevelLoader.GameMode.Hard)
+            if (state.CurrentGameMode == StateController.GameMode.Hard)
             {
                 EnableHardModeUIText();
             }

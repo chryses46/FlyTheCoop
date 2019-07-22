@@ -16,10 +16,10 @@ namespace FlyTheCoop.UI
         public void OnEnable()
         {
             levelLoader = FindObjectOfType<LevelLoader>();
-            mainMenu.onClick.AddListener(CallMainMenu);
+            mainMenu.onClick.AddListener(CallLoadMainMenu);
         }
 #endregion
-        private void CallMainMenu()
+        private void CallLoadMainMenu()
         {
             levelLoader.LoadMainMenu();
         }

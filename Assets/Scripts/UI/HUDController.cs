@@ -34,6 +34,7 @@ namespace FlyTheCoop.UI
         PlayerPrefConfig ppc;
         AudioSource audioSource;
         LevelLoader levelLoader;
+        StateController state;
 #endregion
 #region Startup
         void OnEnable()
@@ -41,6 +42,7 @@ namespace FlyTheCoop.UI
             ppc = FindObjectOfType<PlayerPrefConfig>();
             audioSource = GetComponent<AudioSource>();
             levelLoader = FindObjectOfType<LevelLoader>();
+            state = FindObjectOfType<StateController>();
 
         }
 #endregion
@@ -49,7 +51,7 @@ namespace FlyTheCoop.UI
         {
             audioSource.PlayOneShot(collectEgg);
             
-            if(levelLoader.CurrentGameMode == LevelLoader.GameMode.Hard)
+            if(state.CurrentGameMode == StateController.GameMode.Hard)
             {
                 TotalScore += 1;
             }
@@ -77,7 +79,7 @@ namespace FlyTheCoop.UI
         {
             TotalScore = 0;
 
-            if(levelLoader.CurrentGameMode == LevelLoader.GameMode.Hard)
+            if(state.CurrentGameMode == StateController.GameMode.Hard)
             {
                 UpdateRequiredHardModeEggsCount(0);
             } 
@@ -102,7 +104,7 @@ namespace FlyTheCoop.UI
 
         public void UpdateFinishLine()
         {
-            if(levelLoader.CurrentGameMode == LevelLoader.GameMode.Hard && TotalScore >= _requiredEggs)
+            if(state.CurrentGameMode == StateController.GameMode.Hard && TotalScore >= _requiredEggs)
             {
                 FinishLine.tag = "Finish";
                 Debug.Log("FinishLine unlocked: " + FinishLine.tag);
@@ -117,7 +119,7 @@ namespace FlyTheCoop.UI
 #region UIControl
         public void UpdateEggCountText()
         {   
-            if(levelLoader.CurrentGameMode == LevelLoader.GameMode.Hard)
+            if(state.CurrentGameMode == StateController.GameMode.Hard)
             {
                 eggCountText.text = (LevelScore + TotalScore) + "/" + _requiredEggs;
             }

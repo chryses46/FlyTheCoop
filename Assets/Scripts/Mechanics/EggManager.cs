@@ -12,12 +12,14 @@ namespace FlyTheCoop.Mechanics
 #region TypeReferences
         HUDController hud;
         LevelLoader levelLoader;
+        StateController state;
 #endregion
 #region Startup
         void Awake()
         {
             hud = FindObjectOfType<HUDController>();
             levelLoader = FindObjectOfType<LevelLoader>();
+            state = FindObjectOfType<StateController>();
         }
         void Start()
         {
@@ -26,7 +28,7 @@ namespace FlyTheCoop.Mechanics
 #endregion
         private void SetRequiredEggs()
         {
-            if(levelLoader.CurrentGameMode == LevelLoader.GameMode.Normal)
+            if(state.CurrentGameMode == StateController.GameMode.Normal)
             {
                 hud.RequiredEggs = requiredEggs;
                 hud.UpdateEggCountText();

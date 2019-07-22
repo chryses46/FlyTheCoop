@@ -1,4 +1,5 @@
 ﻿using FlyTheCoop.Core;
+using FlyTheCoop.UI;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -32,6 +33,8 @@ namespace FlyTheCoop.Player
         Rigidbody rigidBody;
         AudioSource audioSource;
         LevelLoader levelLoader;
+        UIController ui;
+        StateController state;
 #endregion
 #region Startup
         public void Start()
@@ -39,6 +42,8 @@ namespace FlyTheCoop.Player
             rigidBody = GetComponent<Rigidbody>();
             audioSource = GetComponent<AudioSource>();
             levelLoader = FindObjectOfType<LevelLoader>();
+            ui = FindObjectOfType<UIController>();
+            state = FindObjectOfType<StateController>();
             originalConstraints = rigidBody.constraints;
         }
         void Update()
@@ -68,7 +73,7 @@ namespace FlyTheCoop.Player
             deathParticles.Play();
 
             // Load scene based on game mode
-            StartCoroutine(levelLoader.LoadSceneWithDelay(levelLoader.CurrentGameMode, false));
+            StartCoroutine(levelLoader.LoadSceneWithDelay(state.CurrentGameMode, false));
         }
 #endregion
 #region ControlMethods
@@ -133,17 +138,17 @@ namespace FlyTheCoop.Player
         {
             if(Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.P))
             {
-                if(levelLoader.CurrentGameState == LevelLoader.GameState.Play)
+                if(state.CurrentGameState == StateController.GameState.Play)
                 {
-                    levelLoader.CurrentGameState = LevelLoader.GameState.Pause;
-                    levelLoader.PauseScreenControl();
+                    state.CurrentGameState = StateController.GameState.Pause;
+                    ui.PauseScreenControl(state.CurrentGameState);
                     isTransitioning = true;
                     rigidBody.constraints = RigidbodyConstraints.FreezeAll;
 
                 }else{
 
-                    levelLoader.CurrentGameState = LevelLoader.GameState.Play;
-                    levelLoader.PauseScreenControl();
+                    state.CurrentGameState = StateController.GameState.Play;
+                    ui.PauseScreenControl(state.CurrentGameState);
                     isTransitioning = false;
                     rigidBody.constraints = originalConstraints;
                 }
