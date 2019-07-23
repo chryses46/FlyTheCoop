@@ -4,11 +4,11 @@ using UnityEngine.UI;
 
 namespace FlyTheCoop.UI
 {
-    public class VersionInfo : MonoBehaviour
+    public class VersionButton : MonoBehaviour
     {
 #region PublicProperties
         [SerializeField] GameObject versionInfo;
-        [SerializeField] Button version;
+        [SerializeField] Button versionButton;
         [SerializeField] Text versionText;
 #endregion
 #region PrivateProperties
@@ -16,9 +16,9 @@ namespace FlyTheCoop.UI
 #endregion
 
 #region Startup
-        void Awake()
+        void Start()
         {
-            version.onClick.AddListener(ShowVersionInfo);
+            versionButton.onClick.AddListener(ShowVersionInfo);
             GetVersionNumber();
         }
         void Update()
@@ -40,6 +40,11 @@ namespace FlyTheCoop.UI
         }
         private void ShowVersionInfo()
         {
+            if(shown == true)
+            {
+                shown = false;
+            }
+
             float yStart = versionInfo.GetComponent<RectTransform>().localPosition.y;
 
             if(yStart == 1000)

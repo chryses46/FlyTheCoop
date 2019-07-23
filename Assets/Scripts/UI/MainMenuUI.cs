@@ -16,7 +16,7 @@ namespace FlyTheCoop.UI
         LevelLoader levelLoader;
 
 
-        void OnEnable()
+        void Awake()
         {
             ui = FindObjectOfType<UIController>();
             levelLoader = FindObjectOfType<LevelLoader>();
@@ -25,22 +25,9 @@ namespace FlyTheCoop.UI
 
         private void AddListeners()
         {
-            newGame.onClick.AddListener(LoadModeScene);
-            controls.onClick.AddListener(ControlScreen);
-            levelSelect.onClick.AddListener(LoadLevelSelect);
-        }
-
-        private void LoadModeScene()
-        {
-            levelLoader.LoadModeScene();
-        }
-        private void ControlScreen()
-        {
-            ui.DisplayControlScreen();
-        }
-        private void LoadLevelSelect()
-        {
-            levelLoader.LoadLevelSelect();
+            newGame.onClick.AddListener(levelLoader.LoadModeScene);
+            controls.onClick.AddListener(ui.DisplayControlScreen);
+            levelSelect.onClick.AddListener(levelLoader.LoadLevelSelect);
         }
     }
 }
