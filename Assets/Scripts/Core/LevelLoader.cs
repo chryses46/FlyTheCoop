@@ -2,7 +2,6 @@
 using FlyTheCoop.UI;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
 namespace FlyTheCoop.Core
 {
@@ -10,13 +9,6 @@ namespace FlyTheCoop.Core
     {
 #region PublicProperties
         public float levelLoadDelay = 2f;
-        // [SerializeField] Button newGame;
-        // [SerializeField] Button controls;
-    
-        // [SerializeField] Button levelSelect;
-        // public GameObject pauseScreen;
-        // public GameObject hudGo;
-        // GameObject mainSpalsh;
 #endregion
 #region TypeReferences
         MusicPlayer music;
@@ -38,49 +30,6 @@ namespace FlyTheCoop.Core
             state = GetComponent<StateController>();
             ui = GetComponent<UIController>();
         }
-
-        void Update()
-        {
-            if(SceneManager.GetActiveScene().buildIndex == 0)
-            {
-                //HideVersionInfoOnClickAway();
-            }
-        }
-#endregion
-#region ManageButtons
-        // private void PopulateButtons()
-        // {
-        //     if(!newGame & !controls)
-        //     {
-        //         mainSpalsh = GameObject.Find("MainSplashCanvas");
-        //         newGame = mainSpalsh.transform.Find("New Game").gameObject.GetComponent<Button>();
-        //         controls = mainSpalsh.transform.Find("Controls").gameObject.GetComponent<Button>();
-        //         levelSelect = mainSpalsh.transform.Find("LevelSelect").gameObject.GetComponent<Button>();
-        //     }
-
-        //     AddListeners();
-        // }
-
-        // private void AddListeners()
-        // {
-        //     newGame.onClick.AddListener(LoadModeScene);
-        //     controls.onClick.AddListener(ShowControls);
-        //     levelSelect.onClick.AddListener(LoadLevelSelect);
-        // }
-
-        // private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
-        // {
-        //     int loadedSceneIndex = scene.buildIndex;
-
-        //     if(loadedSceneIndex == 0)
-        //     {
-        //         StateController sc;
-        //         sc = GetComponent<StateController>();
-        //         sc.CurrentGameState = StateController.GameState.Menu;
-        //         PopulateButtons();
-        //     }
-        // }
-
 #endregion
 #region SceneNavigation
         public void LoadMainMenu()
@@ -89,18 +38,8 @@ namespace FlyTheCoop.Core
             music.PlayIntroMusic();
             ui.HUDEnabled(false);
             state.CurrentGameState = StateController.GameState.Menu;
-            
-            ui.PauseScreenControl(false);
-
-            // if(ui.pauseScreen.activeSelf == true)
-            // {
-            //     ui.pauseScreen.SetActive(false);
-            // }   
+            ui.PauseScreenControl(); 
         }
-        // public void LoadControls()
-        // {
-        //     SceneManager.LoadScene("Controls");
-        // }
         public void LoadModeScene()
         {
             SceneManager.LoadScene("ModeSelect");
@@ -193,35 +132,6 @@ namespace FlyTheCoop.Core
             }
         }
 #endregion
-#region UIControl
-        // public void HUDEnabled(bool enabled)
-        // {
-        //     if(enabled)
-        //     {
-        //         hudGo.SetActive(true);
-        //         hud = hudGo.GetComponent<HUDController>();
-        //         hud.ResetScore();
-        //     }
-        //     else
-        //     {
-        //         hudGo.SetActive(false);
-        //     }
-        // }
-        // public void PauseScreenControl()
-        // {
-        //     if(state.CurrentGameState == StateController.GameState.Pause)
-        //     {
-        //         pauseScreen.SetActive(true);
-
-        //     }else
-        //     {
-        //         pauseScreen.SetActive(false);
-        //         int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
-        //         SceneManager.LoadScene(currentSceneIndex);
-        //     }
-        // }
-#endregion
-        
         private void ThereCanOnlyBeOne()
         {
             int numLevelLoaders = FindObjectsOfType<LevelLoader>().Length;

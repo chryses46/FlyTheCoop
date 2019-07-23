@@ -12,11 +12,11 @@ namespace FlyTheCoop.UI
         [SerializeField] Text versionText;
 #endregion
 #region PrivateProperties
-        bool shown;
+        public bool shown;
 #endregion
 
 #region Startup
-        void OnEnable()
+        void Awake()
         {
             version.onClick.AddListener(ShowVersionInfo);
             GetVersionNumber();

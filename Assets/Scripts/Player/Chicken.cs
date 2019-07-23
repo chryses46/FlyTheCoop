@@ -39,6 +39,7 @@ namespace FlyTheCoop.Player
 #region Startup
         public void Start()
         {
+            Time.timeScale = 1;
             rigidBody = GetComponent<Rigidbody>();
             audioSource = GetComponent<AudioSource>();
             levelLoader = FindObjectOfType<LevelLoader>();
@@ -53,8 +54,6 @@ namespace FlyTheCoop.Player
                 RespondToRotateInput();
                 RespondToThrustInput();
             }
-
-            PauseGame();
         }
 #endregion        
 #region TransitionMethods
@@ -134,26 +133,7 @@ namespace FlyTheCoop.Player
                 audioSource.PlayOneShot(flyingChicken);
             }
         }
-        public void PauseGame()
-        {
-            if(Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.P))
-            {
-                if(state.CurrentGameState == StateController.GameState.Play)
-                {
-                    state.CurrentGameState = StateController.GameState.Pause;
-                    ui.PauseScreenControl(state.CurrentGameState);
-                    isTransitioning = true;
-                    rigidBody.constraints = RigidbodyConstraints.FreezeAll;
-
-                }else{
-
-                    state.CurrentGameState = StateController.GameState.Play;
-                    ui.PauseScreenControl(state.CurrentGameState);
-                    isTransitioning = false;
-                    rigidBody.constraints = originalConstraints;
-                }
-            }
-        }
+        
 #endregion
     void OnCollisionEnter(Collision collision)
         {

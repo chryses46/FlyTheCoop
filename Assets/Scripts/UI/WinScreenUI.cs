@@ -6,9 +6,11 @@ using FlyTheCoop.Player;
 
 namespace FlyTheCoop.UI
 {
-    public class WinScreen : MonoBehaviour
+    public class WinScreenUI : MonoBehaviour
     {
-#region PublicProperties        
+#region PublicProperties
+        [SerializeField] Button mainMenu;
+        [SerializeField] Button newGame;        
         [SerializeField] Text normalModeText;
         [SerializeField] List<Text> hardModeUIText;
         [SerializeField] Text eggsCollected;
@@ -32,6 +34,8 @@ namespace FlyTheCoop.UI
             DetermineText();
             SetEggsCollectedText();
             SetMostEggsText();
+            newGame.onClick.AddListener(CallLoadModeScene);
+            mainMenu.onClick.AddListener(CallLoadMainMenu);
         }
 #endregion
 
@@ -70,6 +74,16 @@ namespace FlyTheCoop.UI
         private void SetMostEggsText()
         {
             mostEggsCollected.text = "Most Eggs Collected: " + ppc.HighScore;
+        }
+
+        void CallLoadModeScene()
+        {
+            levelLoader.LoadModeScene();
+        }
+
+        private void CallLoadMainMenu()
+        {
+            levelLoader.LoadMainMenu();
         }
     }
 }

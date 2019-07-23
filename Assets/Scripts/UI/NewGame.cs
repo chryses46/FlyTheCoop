@@ -23,5 +23,10 @@ namespace FlyTheCoop.UI
         {
             levelLoader.LoadModeScene();
         }
+
+        private void CallLoadMainMenu()
+        {
+            levelLoader.LoadMainMenu();
+        }
     }
 }

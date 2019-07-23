@@ -392,11 +392,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: CoreController
       objectReference: {fileID: 0}
-    - target: {fileID: 2408548296827676297, guid: 362633441972da44db4366abc3afb138,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 769145135165579065, guid: 362633441972da44db4366abc3afb138,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -574,6 +569,22 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1014784875, guid: 41016de674668d042a77769eae62a191, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1014784878, guid: 41016de674668d042a77769eae62a191, type: 3}
+      propertyPath: m_Color.a
+      value: 0.2784314
+      objectReference: {fileID: 0}
+    - target: {fileID: 1485387380, guid: 41016de674668d042a77769eae62a191, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 924850115, guid: 41016de674668d042a77769eae62a191, type: 3}
+      propertyPath: m_Color.a
+      value: 0.5529412
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 41016de674668d042a77769eae62a191, type: 3}

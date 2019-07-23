@@ -526,7 +526,6 @@ GameObject:
   - component: {fileID: 769145135165579065}
   - component: {fileID: 4945894365648907389}
   - component: {fileID: 6347510938559298467}
-  - component: {fileID: 769145135193652470}
   - component: {fileID: 1495573988}
   - component: {fileID: 769145135193652469}
   - component: {fileID: 3143411252430196387}
@@ -582,19 +581,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levelLoadDelay: 2
---- !u!114 &769145135193652470
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 769145135165579067}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6e498be5d7a8fd943849b42654e10d68, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mainMenu: {fileID: 8509280742549764784}
 --- !u!82 &1495573988
 AudioSource:
   m_ObjectHideFlags: 0
@@ -744,6 +730,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mainSpalsh: {fileID: 0}
   pauseScreen: {fileID: 2408548296827676297}
+  pauseMainMenuButton: {fileID: 8509280742549764784}
   pauseControlsButton: {fileID: 4581873714112206065}
   controlsScreen: {fileID: 2328302689609610390}
   controlsBackButton: {fileID: 2328302689352129142}
@@ -916,7 +903,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1472693168381762579, guid: 1b4a95928a7e342cba2334fd0343b521, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 1b4a95928a7e342cba2334fd0343b521, type: 3}
 --- !u!114 &2328302689352129142 stripped
 MonoBehaviour:
@@ -1012,11 +1000,6 @@ PrefabInstance:
     - target: {fileID: 991539540431908203, guid: ddc20a383ae37fe439a0e61e9faa10c1,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 991539540706107074, guid: ddc20a383ae37fe439a0e61e9faa10c1,
-        type: 3}
-      propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1384948981051694871, guid: ddc20a383ae37fe439a0e61e9faa10c1,
@@ -1154,6 +1137,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4228677143948552738, guid: c617e42384426854cb24aef3ba45b470,
+        type: 3}
+      propertyPath: m_Text
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 4929462269512343447, guid: c617e42384426854cb24aef3ba45b470,
         type: 3}
       propertyPath: eggCountText
@@ -1188,11 +1176,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0.97250366
-      objectReference: {fileID: 0}
-    - target: {fileID: 4228677143948552738, guid: c617e42384426854cb24aef3ba45b470,
-        type: 3}
-      propertyPath: m_Text
-      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c617e42384426854cb24aef3ba45b470, type: 3}

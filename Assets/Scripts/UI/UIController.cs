@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using FlyTheCoop.Core;
@@ -9,23 +7,36 @@ namespace FlyTheCoop.UI
 {
     public class UIController : MonoBehaviour
     {
-        public GameObject mainSpalsh;
-        public GameObject pauseScreen;
+#region PublicProperties
+        [SerializeField] GameObject mainSpalsh;
+        [SerializeField] GameObject pauseScreen;
+        [SerializeField] Button pauseMainMenuButton;
         [SerializeField] Button pauseControlsButton;
         public GameObject controlsScreen;
         [SerializeField] Button controlsBackButton;
-        public GameObject hUD;
+        [SerializeField] GameObject hUD;
+#endregion
+#region TypeReferences
         HUDController hud;
         LevelLoader levelLoader;
         StateController state;
+#endregion
+#region StartUp
         void OnEnable()
         {
             levelLoader = GetComponent<LevelLoader>();
             state = GetComponent<StateController>();
             controlsBackButton.onClick.AddListener(HideControlScreen);
             pauseControlsButton.onClick.AddListener(DisplayControlScreen);
+            pauseMainMenuButton.onClick.AddListener(levelLoader.LoadMainMenu);
         }
-         public void HUDEnabled(bool enabled)
+
+        void Update()
+        {
+            PauseGame();
+        }
+#endregion
+        public void HUDEnabled(bool enabled)
         {
             if(enabled)
             {
@@ -38,22 +49,38 @@ namespace FlyTheCoop.UI
                 hUD.SetActive(false);
             }
         }
-        public void PauseScreenControl(StateController.GameState gameState)
+        public void PauseGame()
         {
-            if(gameState == StateController.GameState.Pause)
+            if(controlsScreen.activeSelf != true & hUD.activeSelf == true)
+            {
+                if(Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.P))
+                {
+                    if(state.CurrentGameState == StateController.GameState.Pause)
+                    {
+                        state.CurrentGameState = StateController.GameState.Play;
+                        PauseScreenControl();
+                        Time.timeScale = 1;
+                    }
+                    else
+                    {
+                        state.CurrentGameState = StateController.GameState.Pause;
+                        Time.timeScale = 0;
+                        PauseScreenControl();
+                    }
+                }
+            }
+        }
+        public void PauseScreenControl()
+        {
+            if(state.CurrentGameState == StateController.GameState.Pause)
             {
                 pauseScreen.SetActive(true);
 
-            }else
+            }
+            else
             {
                 pauseScreen.SetActive(false);
-                int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
-                SceneManager.LoadScene(currentSceneIndex);
             }
-        }
-        public void PauseScreenControl(bool isActive)
-        {
-            pauseScreen.SetActive(isActive);
         }
         public void DisplayControlScreen()
         {
@@ -64,6 +91,11 @@ namespace FlyTheCoop.UI
             }
             else if(state.CurrentGameState == StateController.GameState.Menu)
             {
+                if(!mainSpalsh)
+                {
+                    mainSpalsh = FindObjectOfType<MainMenuUI>().gameObject;
+                }
+
                 mainSpalsh.SetActive(false);
             }
 
