@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace FlyTheCoop.Player
+namespace FlyTheCoop.Core
 {
     public class PlayerPrefConfig : MonoBehaviour
     {

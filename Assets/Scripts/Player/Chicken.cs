@@ -84,7 +84,7 @@ namespace FlyTheCoop.Player
 
             if (Input.GetKey(KeyCode.A)) // can only press A or B, but not at the same time
             {
-                if (SceneManager.GetActiveScene().name == "Level5")
+                if (SceneManager.GetActiveScene().name == "Garage")
                 {
                     transform.Rotate(-Vector3.forward * rotationThisFrame);
                 }
@@ -95,7 +95,7 @@ namespace FlyTheCoop.Player
             }
             else if (Input.GetKey(KeyCode.D))
             {
-                if (SceneManager.GetActiveScene().name == "Level5")
+                if (SceneManager.GetActiveScene().name == "Garage")
                 {
                     transform.Rotate(Vector3.forward * rotationThisFrame);
                 }

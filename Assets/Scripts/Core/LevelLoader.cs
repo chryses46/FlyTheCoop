@@ -12,22 +12,17 @@ namespace FlyTheCoop.Core
 #endregion
 #region TypeReferences
         MusicPlayer music;
-        //HUDController hud;
         StateController state;
+        EggManager eggManager;
         UIController ui;
 #endregion
 #region Startup
-        // void OnEnable()
-        // {
-        //     SceneManager.sceneLoaded += OnSceneLoaded;
-        // }
-
         public void Start()
         {
-            //AddListeners();
             ThereCanOnlyBeOne();
             music = GetComponent<MusicPlayer>();
             state = GetComponent<StateController>();
+            eggManager = GetComponent<EggManager>();
             ui = GetComponent<UIController>();
         }
 #endregion
@@ -84,7 +79,7 @@ namespace FlyTheCoop.Core
         {
             int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
             
-//Eggmanager          hud.UpdateTotalScore();
+            eggManager.UpdateTotalScore();
 
             //Reaches end of SceceCount (wins game) and goes to WinScreen
             if (currentSceneIndex == SceneManager.sceneCountInBuildSettings - 3)
@@ -97,7 +92,7 @@ namespace FlyTheCoop.Core
 
                 if(state.CurrentGameMode == StateController.GameMode.Hard)
                 {
-//Eggmanager                    hud.UpdateRequiredHardModeEggsCount(currentSceneIndex - 2);
+                    eggManager.UpdateRequiredHardModeEggsCount(currentSceneIndex - 2);
                 }
             }
         }
@@ -105,7 +100,7 @@ namespace FlyTheCoop.Core
         {
             Debug.Log("GameWon called");
             SceneManager.LoadScene("WinScreen");
-//Eggmanager            hud.UpdateHighScore();
+            eggManager.UpdateHighScore();
             music.PlayWinMusic();
         }
         public IEnumerator LoadSceneWithDelay(StateController.GameMode mode = StateController.GameMode.Normal, bool winning = true) // SceneLoader
@@ -113,14 +108,14 @@ namespace FlyTheCoop.Core
             if(!winning && mode == StateController.GameMode.Hard)
             {
                 yield return new WaitForSeconds(levelLoadDelay);
-//Eggmanager                hud.ResetLevelScore();
-//Eggmanager                hud.ResetScore();
+                eggManager.ResetLevelScore();
+                eggManager.ResetScore();
                 FirstScene();
             }
             else if(!winning)
             {
                 yield return new WaitForSeconds(levelLoadDelay);
-//Eggmanager                hud.ResetLevelScore();
+                eggManager.ResetLevelScore();
                 ThisScene();
             }
 
@@ -132,6 +127,7 @@ namespace FlyTheCoop.Core
             }
         }
 #endregion
+#region Singleton
         private void ThereCanOnlyBeOne()
         {
             int numLevelLoaders = FindObjectsOfType<LevelLoader>().Length;
@@ -145,4 +141,5 @@ namespace FlyTheCoop.Core
             }
         }
     }
+#endregion
 }

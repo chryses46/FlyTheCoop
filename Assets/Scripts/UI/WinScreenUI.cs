@@ -2,7 +2,6 @@
 using UnityEngine;
 using UnityEngine.UI;
 using FlyTheCoop.Core;
-using FlyTheCoop.Player;
 
 namespace FlyTheCoop.UI
 {
@@ -18,8 +17,8 @@ namespace FlyTheCoop.UI
 #endregion
 #region TypeReferences
         LevelLoader levelLoader;
+        EggManager eggManager;
         UIController ui;
-        HUDController hud;
         PlayerPrefConfig ppc;
         StateController state;
 #endregion
@@ -27,8 +26,8 @@ namespace FlyTheCoop.UI
         void Start()
         {
             levelLoader = FindObjectOfType<LevelLoader>();
+            eggManager = FindObjectOfType<EggManager>();
             ui = FindObjectOfType<UIController>();
-            hud = FindObjectOfType<HUDController>();
             ppc = FindObjectOfType<PlayerPrefConfig>();
             state = FindObjectOfType<StateController>();
             DetermineText();
@@ -38,7 +37,7 @@ namespace FlyTheCoop.UI
             mainMenu.onClick.AddListener(CallLoadMainMenu);
         }
 #endregion
-
+#region WinScreenUIMethods
         private void DetermineText()
         {
             ui.HUDEnabled(false);
@@ -68,7 +67,7 @@ namespace FlyTheCoop.UI
 
         private void SetEggsCollectedText()
         {
-            eggsCollected.text = "Eggs Collected: " + hud.TotalScore;
+            eggsCollected.text = "Eggs Collected: " + eggManager.TotalScore;
         }
 
         private void SetMostEggsText()
@@ -85,5 +84,6 @@ namespace FlyTheCoop.UI
         {
             levelLoader.LoadMainMenu();
         }
+#endregion
     }
 }

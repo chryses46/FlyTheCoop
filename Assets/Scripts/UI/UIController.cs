@@ -18,12 +18,14 @@ namespace FlyTheCoop.UI
 #endregion
 #region TypeReferences
         HUDController hud;
+        EggManager eggManager;
         LevelLoader levelLoader;
         StateController state;
 #endregion
 #region StartUp
         void OnEnable()
         {
+            eggManager = GetComponent<EggManager>();
             levelLoader = GetComponent<LevelLoader>();
             state = GetComponent<StateController>();
             controlsBackButton.onClick.AddListener(HideControlScreen);
@@ -41,8 +43,7 @@ namespace FlyTheCoop.UI
             if(enabled)
             {
                 hUD.SetActive(true);
-                hud = hUD.GetComponent<HUDController>();
-                hud.ResetScore();
+                eggManager.ResetScore();
             }
             else
             {

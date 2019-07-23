@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5330488718251790763}
   - component: {fileID: 5330488718251790762}
   - component: {fileID: 887185733}
+  - component: {fileID: 574865611}
   m_Layer: 0
   m_Name: Teleportal
   m_TagString: Finish
@@ -93,6 +94,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.0000001, y: 2.0822284, z: 1.0000002}
   m_Center: {x: 0, y: 0.041115593, z: 0}
+--- !u!114 &574865611
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5330488718251790760}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50b12282574cb1d479ee0406c88f228a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5330488719092766432
 GameObject:
   m_ObjectHideFlags: 0
@@ -104,12 +117,12 @@ GameObject:
   - component: {fileID: 5330488719092766433}
   - component: {fileID: 5330488719092766434}
   m_Layer: 0
-  m_Name: Spot Light
+  m_Name: Light
   m_TagString: Finish
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5330488719092766433
 Transform:
   m_ObjectHideFlags: 0
@@ -196,7 +209,7 @@ GameObject:
   - component: {fileID: 5330488719216213953}
   - component: {fileID: 5330488719216213952}
   m_Layer: 0
-  m_Name: Particle System
+  m_Name: Effect
   m_TagString: Finish
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -211,7 +224,7 @@ Transform:
   m_GameObject: {fileID: 5330488719216213958}
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: -0.057, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2.2483, y: 2.2483, z: 2.2483}
   m_Children: []
   m_Father: {fileID: 5330488718251790756}
   m_RootOrder: 1
@@ -224,7 +237,7 @@ ParticleSystem:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5330488719216213958}
   serializedVersion: 6
-  lengthInSec: 5
+  lengthInSec: 1
   simulationSpeed: 0.44
   stopAction: 0
   cullingMode: 0
@@ -232,7 +245,7 @@ ParticleSystem:
   ringBufferLoopRange: {x: 0, y: 1}
   looping: 1
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 0
   autoRandomSeed: 1
   useRigidbodyForVelocity: 0
@@ -298,9 +311,9 @@ ParticleSystem:
     enabled: 1
     startLifetime:
       serializedVersion: 2
-      minMaxState: 0
-      scalar: 2.2
-      minScalar: 5
+      minMaxState: 3
+      scalar: 0.87
+      minScalar: 0.2
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -351,9 +364,9 @@ ParticleSystem:
         m_RotationOrder: 4
     startSpeed:
       serializedVersion: 2
-      minMaxState: 0
-      scalar: 2.43
-      minScalar: 5
+      minMaxState: 3
+      scalar: 4
+      minScalar: 1
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -467,9 +480,9 @@ ParticleSystem:
         m_NumAlphaKeys: 2
     startSize:
       serializedVersion: 2
-      minMaxState: 0
-      scalar: 1.15
-      minScalar: 1
+      minMaxState: 3
+      scalar: 0.6
+      minScalar: 0.1
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -520,7 +533,7 @@ ParticleSystem:
         m_RotationOrder: 4
     startSizeY:
       serializedVersion: 2
-      minMaxState: 0
+      minMaxState: 3
       scalar: 1
       minScalar: 1
       maxCurve:
@@ -573,7 +586,7 @@ ParticleSystem:
         m_RotationOrder: 4
     startSizeZ:
       serializedVersion: 2
-      minMaxState: 0
+      minMaxState: 3
       scalar: 1
       minScalar: 1
       maxCurve:
@@ -784,7 +797,7 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     randomizeRotationDirection: 0
-    maxNumParticles: 10000
+    maxNumParticles: 1000
     size3D: 0
     rotation3D: 0
     gravityModifier:
@@ -844,7 +857,7 @@ ParticleSystem:
     serializedVersion: 6
     enabled: 1
     type: 4
-    angle: 25
+    angle: 0
     length: 5
     boxThickness: {x: 0, y: 0, z: 0}
     radiusThickness: 1
@@ -930,7 +943,7 @@ ParticleSystem:
     sphericalDirectionAmount: 0
     randomPositionAmount: 0
     radius:
-      value: 2.59
+      value: 1.7
       mode: 0
       spread: 0
       speed:
@@ -988,12 +1001,12 @@ ParticleSystem:
           m_RotationOrder: 4
     arc:
       value: 360
-      mode: 2
+      mode: 0
       spread: 0
       speed:
         serializedVersion: 2
         minMaxState: 0
-        scalar: -5
+        scalar: 1
         minScalar: 1
         maxCurve:
           serializedVersion: 2
@@ -1049,7 +1062,7 @@ ParticleSystem:
     rateOverTime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 70.51
+      scalar: 169.86
       minScalar: 10
       maxCurve:
         serializedVersion: 2

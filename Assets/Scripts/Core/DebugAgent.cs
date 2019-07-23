@@ -8,11 +8,13 @@ namespace FlyTheCoop.Core
     {
 #region TypeReferences
         LevelLoader levelLoader;
+        EggManager eggManager;
 #endregion
 #region Startup
         void Start()
         {
             levelLoader = GetComponent<LevelLoader>();
+            eggManager = GetComponent<EggManager>();
         }
         void Update()
         {
@@ -43,7 +45,7 @@ namespace FlyTheCoop.Core
         {
             HUDController hud = FindObjectOfType<HUDController>();
 
-            hud.EggCollected();
+            eggManager.EggCollected();
         }
         private void DisableCollisions()
         {

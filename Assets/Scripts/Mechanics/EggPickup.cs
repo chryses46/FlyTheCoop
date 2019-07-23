@@ -1,8 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using FlyTheCoop.Core;
-using FlyTheCoop.UI;
 
 namespace FlyTheCoop.Mechanics
 {
@@ -13,15 +10,13 @@ namespace FlyTheCoop.Mechanics
         public bool isHardModeEgg;
 #endregion        
 #region TypeReferences
-        HUDController hud;
-        LevelLoader levelLoader;
+        EggManager eggManager;
         StateController state;
 #endregion
 #region Startup
         void Start()
         {
-            levelLoader = FindObjectOfType<LevelLoader>();
-            hud = FindObjectOfType<HUDController>();
+            eggManager = FindObjectOfType<EggManager>();
             state = FindObjectOfType<StateController>();
             IsThisHardMode();
         }
@@ -37,7 +32,7 @@ namespace FlyTheCoop.Mechanics
         {
             if(other.tag == "Player")
             {
-                hud.EggCollected();
+                eggManager.EggCollected();
                 Destroy(this.gameObject);
             }
         }

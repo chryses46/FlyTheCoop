@@ -5074,6 +5074,35 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5330488719216213959, guid: 68b713693a51f4a91997acb40f206b9c,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2.4538097
+      objectReference: {fileID: 0}
+    - target: {fileID: 5330488719216213959, guid: 68b713693a51f4a91997acb40f206b9c,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2.4538097
+      objectReference: {fileID: 0}
+    - target: {fileID: 5330488719216213959, guid: 68b713693a51f4a91997acb40f206b9c,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 2.4538097
+      objectReference: {fileID: 0}
+    - target: {fileID: 5330488719092766432, guid: 68b713693a51f4a91997acb40f206b9c,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5330488719216213953, guid: 68b713693a51f4a91997acb40f206b9c,
+        type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 574865611, guid: 68b713693a51f4a91997acb40f206b9c, type: 3}
+      propertyPath: requiredEggs
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 68b713693a51f4a91997acb40f206b9c, type: 3}
 --- !u!4 &814349745 stripped
@@ -5082,24 +5111,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 814349744}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &814349746 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5330488718251790760, guid: 68b713693a51f4a91997acb40f206b9c,
-    type: 3}
-  m_PrefabInstance: {fileID: 814349744}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &814349747
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 814349746}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 50b12282574cb1d479ee0406c88f228a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &821113393
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10452,7 +10463,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1688428876}
-  - component: {fileID: 1688428877}
   m_Layer: 0
   m_Name: eggs
   m_TagString: Untagged
@@ -10482,19 +10492,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1688428877
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1688428875}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1896667daa4690b47b9c1eda99928316, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  requiredEggs: 2
 --- !u!1001 &1690226814
 PrefabInstance:
   m_ObjectHideFlags: 0
