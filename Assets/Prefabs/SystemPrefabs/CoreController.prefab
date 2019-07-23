@@ -824,8 +824,7 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 1472693168381762579, guid: 1b4a95928a7e342cba2334fd0343b521, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1b4a95928a7e342cba2334fd0343b521, type: 3}
 --- !u!114 &2328302689352129142 stripped
 MonoBehaviour:
@@ -1003,6 +1002,21 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4929462269512343447, guid: c617e42384426854cb24aef3ba45b470,
+        type: 3}
+      propertyPath: eggCountText
+      value: 
+      objectReference: {fileID: 6501060677380250169}
+    - target: {fileID: 4929462269512343447, guid: c617e42384426854cb24aef3ba45b470,
+        type: 3}
+      propertyPath: state
+      value: 
+      objectReference: {fileID: 4945894365648907389}
+    - target: {fileID: 4929462269512343447, guid: c617e42384426854cb24aef3ba45b470,
+        type: 3}
+      propertyPath: eggManager
+      value: 
+      objectReference: {fileID: 1866186066877773460}
     - target: {fileID: 4228677143273007904, guid: c617e42384426854cb24aef3ba45b470,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1063,11 +1077,6 @@ PrefabInstance:
       propertyPath: m_Text
       value: 
       objectReference: {fileID: 0}
-    - target: {fileID: 4929462269512343447, guid: c617e42384426854cb24aef3ba45b470,
-        type: 3}
-      propertyPath: eggCountText
-      value: 
-      objectReference: {fileID: 6501060677380250169}
     - target: {fileID: 2793714955491669776, guid: c617e42384426854cb24aef3ba45b470,
         type: 3}
       propertyPath: m_AnchoredPosition.y
