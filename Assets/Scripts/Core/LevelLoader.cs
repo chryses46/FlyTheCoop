@@ -103,7 +103,10 @@ namespace FlyTheCoop.Core
         private void GameWon()
         {
             SceneManager.LoadScene("WinScreen");
-            eggManager.UpdateHighScore();
+            if(state.CurrentGameMode == StateController.GameMode.Hard)
+            {
+               eggManager.UpdateHighScore(); 
+            }
             music.PlayWinMusic();
         }
         public IEnumerator LoadSceneWithDelay(StateController.GameMode mode = StateController.GameMode.Normal, bool winning = true) // SceneLoader

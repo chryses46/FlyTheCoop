@@ -28,6 +28,7 @@ namespace FlyTheCoop.Core
         private int _requiredEggs;
         public int LevelScore { get; private set; }
         public int TotalScore { get; private set; }
+        public int HardModeEggsThisLevel {get; private set;}
 #endregion
 #region TypeReferences
         
@@ -53,6 +54,7 @@ namespace FlyTheCoop.Core
             if(state.CurrentGameMode == StateController.GameMode.Hard)
             {
                 TotalScore += 1;
+                HardModeEggsThisLevel += 1;
             }
             else
             {
@@ -62,9 +64,19 @@ namespace FlyTheCoop.Core
             UpdateExit();
             hUD.UpdateEggCountText();
         }
-        public void UpdateTotalScore()
+        public void UpdateTotalScore() // called on both Hard and Normal Mode
         {
             TotalScore += LevelScore;
+            if(state.CurrentGameMode == StateController.GameMode.Hard)
+            {
+                ppc.ManageEggBasket(HardModeEggsThisLevel);
+                HardModeEggsThisLevel = 0;
+            }
+            else
+            {
+               ppc.ManageEggBasket(LevelScore); 
+            }
+            
             ResetLevelScore();
         }
         public void UpdateHighScore()

@@ -112,6 +112,10 @@ namespace FlyTheCoop.UI
                 mainSpalsh.SetActive(false);
             }
 
+            if(confirmMainMenuMessage.activeSelf)
+            {
+                CloseConfirmMainMenuWindow();
+            }
             controlsScreen.SetActive(true);
         }
         public void HideControlScreen()

@@ -10,10 +10,12 @@ namespace FlyTheCoop.UI
     public class MainMenuUI : MonoBehaviour
     {
 #region PublicProperties
-        [SerializeField] Button newGame;
-        [SerializeField] Button controls;
-        [SerializeField] Button levelSelect;
-        [SerializeField] Button achievements;
+        [SerializeField] Button newGameButton;
+        [SerializeField] Button controlsButton;
+        [SerializeField] Button levelSelectButton;
+        [SerializeField] Button achievementsButton;
+        [SerializeField] Button eggStoreButton;
+        [SerializeField] Text eggBasketCount;
         [SerializeField] Button versionButton;
         [SerializeField] GameObject versionInfo;
         [SerializeField] Text versionText;
@@ -25,15 +27,14 @@ namespace FlyTheCoop.UI
         PlayerPrefConfig ppc;
 #endregion
 #region StartUp
-        void Awake()
+        void Start()
         {
             ui = FindObjectOfType<UIController>();
             levelLoader = FindObjectOfType<LevelLoader>();
             ppc = FindObjectOfType<PlayerPrefConfig>();
             AddListeners();
-        }
-        void Start()
-        {
+            SetEggBasketCountText();
+            CheckLevelSelectEnabled();
             GetVersionNumber();
         }
         void Update()
@@ -43,11 +44,17 @@ namespace FlyTheCoop.UI
 #endregion
         private void AddListeners()
         {
-            newGame.onClick.AddListener(levelLoader.LoadModeScene);
-            controls.onClick.AddListener(ui.DisplayControlScreen);
-            levelSelect.onClick.AddListener(CheckGameCompleteStatus);
+            newGameButton.onClick.AddListener(levelLoader.LoadModeScene);
+            controlsButton.onClick.AddListener(ui.DisplayControlScreen);
+            levelSelectButton.onClick.AddListener(CheckGameCompleteStatus);
             versionButton.onClick.AddListener(ShowVersionInfo);
-            achievements.onClick.AddListener(LoadAchievements);
+            achievementsButton.onClick.AddListener(LoadAchievements);
+            eggStoreButton.onClick.AddListener(EggStore);
+
+        }
+        private void EggStore()
+        {
+            ui.CallNoticeWindow("Check back soon for cool add-ons and unlocks you can buy with eggs from your Egg Basket!");
         }
 
         private void CheckGameCompleteStatus()
@@ -61,10 +68,28 @@ namespace FlyTheCoop.UI
                 ui.CallNoticeWindow("Level Select is unlocked once you complete the game in Normal Mode!");
             }
         }
-
         private void LoadAchievements()
         {
             ui.CallNoticeWindow("Achievements coming soon! Please check back later.");
+        }
+        private void SetEggBasketCountText()
+        {
+            eggBasketCount.text = ppc.EggBasket.ToString();
+        }
+        private void CheckLevelSelectEnabled()
+        {
+            if(ppc.IsNormalModeCompleted())
+            {
+                Image levelSelectButtonImage = levelSelectButton.GetComponent<Image>();
+                Color levelSelectButtonColor = levelSelectButtonImage.color;
+                levelSelectButtonColor.a = 100;
+                levelSelectButtonImage.color = levelSelectButtonColor;
+
+                Text levelSelectText = levelSelectButton.transform.GetComponentInChildren<Text>();
+                Color levelSelectTextColor = levelSelectText.color;
+                levelSelectTextColor.a = 100;
+                levelSelectText.color = levelSelectTextColor;
+            }
         }
         void HideVersionInfoOnClickAway()
         {
