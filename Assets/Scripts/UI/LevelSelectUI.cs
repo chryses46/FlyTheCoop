@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using FlyTheCoop.Core;
@@ -16,11 +15,13 @@ namespace FlyTheCoop.UI
 #endregion
 #region TypeReferences
         LevelLoader levelLoader;
+        UIController ui;
 #endregion
 #region StartUp
         void Start()
         {
             levelLoader = FindObjectOfType<LevelLoader>();
+            ui = FindObjectOfType<UIController>();
             SetListeners();
         }
 #endregion
@@ -31,10 +32,22 @@ namespace FlyTheCoop.UI
                 Text buttonText = levelButtons[i].transform.GetComponentInChildren<Text>();
                 string buttonName = buttonText.text;
 
-                levelButtons[i].onClick.AddListener(delegate{levelLoader.SelectLevel(buttonName);});
+                if(buttonName == "Coming Soon!")
+                {
+                    levelButtons[i].onClick.AddListener(ComingSoonMessage);
+                }
+                else
+                {
+                    levelButtons[i].onClick.AddListener(delegate{levelLoader.SelectLevel(buttonName);});
+                }
             }
 
             backButton.onClick.AddListener(levelLoader.LoadMainMenu);
+        }
+
+        private void ComingSoonMessage()
+        {
+            ui.CallNoticeWindow("Come back soon for more levels!");
         }
     }
 }

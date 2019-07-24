@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace FlyTheCoop.Core
 {
@@ -12,7 +13,7 @@ namespace FlyTheCoop.Core
         {
             ManageHighScore();
         }
-#endregion
+        #endregion
         public void ManageHighScore(int sessionScore = 0)
         {
             int prevHighScore = PlayerPrefs.GetInt("HighScore");
@@ -27,5 +28,23 @@ namespace FlyTheCoop.Core
                 PlayerPrefs.SetInt("HighScore", sessionScore);
             }
         }
+        public bool IsNormalModeCompleted()
+        {
+            string currentNormalModeCompletionStatus = PlayerPrefs.GetString("NormalModeCompleted");
+
+            if(currentNormalModeCompletionStatus == "true")
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        public void NormalModeCompleted()
+        {
+            PlayerPrefs.SetString("NormalModeCompleted", "true");
+        }
+
     }
 }

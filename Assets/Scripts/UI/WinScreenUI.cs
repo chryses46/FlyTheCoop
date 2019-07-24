@@ -49,6 +49,7 @@ namespace FlyTheCoop.UI
             else
             {
                 EnableNormalModeText();
+                ppc.NormalModeCompleted();
             }
         }
 

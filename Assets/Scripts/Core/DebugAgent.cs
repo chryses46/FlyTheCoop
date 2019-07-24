@@ -40,6 +40,11 @@ namespace FlyTheCoop.Core
             {
                 AddToEggCount();
             }
+
+            if(Input.GetKeyDown(KeyCode.W))
+            {
+                PlayerPrefs.SetString("NormalModeCompleted", "false");
+            }
         }
         private void AddToEggCount()
         {

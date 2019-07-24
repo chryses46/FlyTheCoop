@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using FlyTheCoop.Core;
+using System;
 
 namespace FlyTheCoop.UI
 {
@@ -11,6 +12,9 @@ namespace FlyTheCoop.UI
         [SerializeField] GameObject pauseScreen;
         [SerializeField] Button pauseMainMenuButton;
         [SerializeField] Button pauseControlsButton;
+        [SerializeField] GameObject confirmMainMenuMessage;
+        [SerializeField] Button confirmMessageYesButton;
+        [SerializeField] Button confirmMessageCancelButton;
         public GameObject controlsScreen;
         [SerializeField] Button controlsBackButton;
         [SerializeField] GameObject hUD;
@@ -78,13 +82,19 @@ namespace FlyTheCoop.UI
             if(state.CurrentGameState == StateController.GameState.Pause)
             {
                 pauseScreen.SetActive(true);
-
             }
             else
-            {
+            {   
+                if(confirmMainMenuMessage.activeSelf)
+                {
+                    CloseConfirmMainMenuWindow();
+                }
+
                 pauseScreen.SetActive(false);
             }
         }
+
+
         public void DisplayControlScreen()
         {
             
@@ -119,16 +129,27 @@ namespace FlyTheCoop.UI
         }
         private void ConfirmMainMenu()
         {
-            
+            confirmMainMenuMessage.SetActive(true);
+            confirmMessageYesButton.onClick.AddListener(GoToMainMenu);
+            confirmMessageCancelButton.onClick.AddListener(CloseConfirmMainMenuWindow);
         }
-
+        private void GoToMainMenu()
+        {
+            levelLoader.LoadMainMenu();
+            confirmMainMenuMessage.SetActive(false);
+            pauseScreen.SetActive(false);
+        }
+        private void CloseConfirmMainMenuWindow()
+        {
+            confirmMainMenuMessage.SetActive(false);
+        }
         public void CallNoticeWindow(string message)
         {
             noticeWindow.SetActive(true);
             closeNoticeWindowButton.onClick.AddListener(CloseNoticeWindow);
             noticeText.text = message;
         }
-        private void CloseNoticeWindow()
+        public void CloseNoticeWindow()
         {
             noticeWindow.SetActive(false);
             noticeText.text = null;

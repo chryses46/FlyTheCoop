@@ -33,15 +33,18 @@ namespace FlyTheCoop.Core
             SceneManager.LoadScene(0);
             music.PlayIntroMusic();
             ui.HUDEnabled(false);
-            ui.PauseScreenControl(); 
+            ui.PauseScreenControl();
+            ui.CloseNoticeWindow();
         }
         public void LoadModeScene()
         {
+            ui.CloseNoticeWindow();
             SceneManager.LoadScene("ModeSelect");
             music.PlayIntroMusic();
         }
         public void LoadLevelSelect() //for future release
         {
+            ui.CloseNoticeWindow();
             SceneManager.LoadScene("LevelSelect");
             music.PlayIntroMusic();
         }
@@ -63,6 +66,7 @@ namespace FlyTheCoop.Core
             {
                 SceneManager.LoadScene(3);    
             }
+            ui.CloseNoticeWindow();
             ui.HUDEnabled(true);
             music.PlayGameMusic();
         }

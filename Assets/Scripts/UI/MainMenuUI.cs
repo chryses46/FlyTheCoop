@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using FlyTheCoop.Core;
+using System;
 
 namespace FlyTheCoop.UI
 {
@@ -21,12 +22,14 @@ namespace FlyTheCoop.UI
 #region TypeReferences
         UIController ui;
         LevelLoader levelLoader;
+        PlayerPrefConfig ppc;
 #endregion
 #region StartUp
         void Awake()
         {
             ui = FindObjectOfType<UIController>();
             levelLoader = FindObjectOfType<LevelLoader>();
+            ppc = FindObjectOfType<PlayerPrefConfig>();
             AddListeners();
         }
         void Start()
@@ -42,10 +45,23 @@ namespace FlyTheCoop.UI
         {
             newGame.onClick.AddListener(levelLoader.LoadModeScene);
             controls.onClick.AddListener(ui.DisplayControlScreen);
-            levelSelect.onClick.AddListener(levelLoader.LoadLevelSelect);
+            levelSelect.onClick.AddListener(CheckGameCompleteStatus);
             versionButton.onClick.AddListener(ShowVersionInfo);
             achievements.onClick.AddListener(LoadAchievements);
         }
+
+        private void CheckGameCompleteStatus()
+        {
+            if(ppc.IsNormalModeCompleted())
+            {
+                levelLoader.LoadLevelSelect();
+            }
+            else
+            {
+                ui.CallNoticeWindow("Level Select is unlocked once you complete the game in Normal Mode!");
+            }
+        }
+
         private void LoadAchievements()
         {
             ui.CallNoticeWindow("Achievements coming soon! Please check back later.");
