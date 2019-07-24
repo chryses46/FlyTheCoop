@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
 using FlyTheCoop.Core;
 
 namespace FlyTheCoop.UI
@@ -15,6 +14,9 @@ namespace FlyTheCoop.UI
         public GameObject controlsScreen;
         [SerializeField] Button controlsBackButton;
         [SerializeField] GameObject hUD;
+        [SerializeField] GameObject noticeWindow;
+        [SerializeField] Text noticeText;
+        [SerializeField] Button closeNoticeWindowButton;
 #endregion
 #region TypeReferences
         HUDController hud;
@@ -30,7 +32,7 @@ namespace FlyTheCoop.UI
             state = GetComponent<StateController>();
             controlsBackButton.onClick.AddListener(HideControlScreen);
             pauseControlsButton.onClick.AddListener(DisplayControlScreen);
-            pauseMainMenuButton.onClick.AddListener(levelLoader.LoadMainMenu);
+            pauseMainMenuButton.onClick.AddListener(ConfirmMainMenu);
         }
 
         void Update()
@@ -114,6 +116,22 @@ namespace FlyTheCoop.UI
             {
                 mainSpalsh.SetActive(true);
             }
+        }
+        private void ConfirmMainMenu()
+        {
+            
+        }
+
+        public void CallNoticeWindow(string message)
+        {
+            noticeWindow.SetActive(true);
+            closeNoticeWindowButton.onClick.AddListener(CloseNoticeWindow);
+            noticeText.text = message;
+        }
+        private void CloseNoticeWindow()
+        {
+            noticeWindow.SetActive(false);
+            noticeText.text = null;
         }
     }
 }

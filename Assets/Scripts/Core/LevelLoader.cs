@@ -29,10 +29,10 @@ namespace FlyTheCoop.Core
 #region SceneNavigation
         public void LoadMainMenu()
         {
+            state.CurrentGameState = StateController.GameState.Menu;
             SceneManager.LoadScene(0);
             music.PlayIntroMusic();
             ui.HUDEnabled(false);
-            state.CurrentGameState = StateController.GameState.Menu;
             ui.PauseScreenControl(); 
         }
         public void LoadModeScene()
@@ -98,7 +98,6 @@ namespace FlyTheCoop.Core
         }
         private void GameWon()
         {
-            Debug.Log("GameWon called");
             SceneManager.LoadScene("WinScreen");
             eggManager.UpdateHighScore();
             music.PlayWinMusic();

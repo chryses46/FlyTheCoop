@@ -34,7 +34,7 @@ namespace FlyTheCoop.UI
             SetEggsCollectedText();
             SetMostEggsText();
             newGame.onClick.AddListener(CallLoadModeScene);
-            mainMenu.onClick.AddListener(CallLoadMainMenu);
+            mainMenu.onClick.AddListener(levelLoader.LoadMainMenu);
         }
 #endregion
 #region WinScreenUIMethods
@@ -78,11 +78,6 @@ namespace FlyTheCoop.UI
         void CallLoadModeScene()
         {
             levelLoader.LoadModeScene();
-        }
-
-        private void CallLoadMainMenu()
-        {
-            levelLoader.LoadMainMenu();
         }
 #endregion
     }

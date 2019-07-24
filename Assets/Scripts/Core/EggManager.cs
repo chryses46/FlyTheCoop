@@ -111,7 +111,6 @@ namespace FlyTheCoop.Core
             Exit = exit;
             SetRequiredEggs(requiredEggs);
             Exit.tag = "Untagged"; // Disables the Exit
-            Debug.Log("Exit locked: " + Exit.tag);
 
             UpdateExit();
         }

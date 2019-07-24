@@ -17,14 +17,12 @@ namespace FlyTheCoop.UI
 #region Startup
         void Start()
         {
+            levelLoader = FindObjectOfType<LevelLoader>();
             normalButton.onClick.AddListener(SetNormalMode);
             hardButton.onClick.AddListener(SetHardMode);
-            mainMenu.onClick.AddListener(LoadMainMenu);
-            
-            levelLoader = FindObjectOfType<LevelLoader>().GetComponent<LevelLoader>();
+            mainMenu.onClick.AddListener(levelLoader.LoadMainMenu);
         }
 #endregion
-
         private void SetHardMode()
         {
             levelLoader.StartGame(StateController.GameMode.Hard);
@@ -32,10 +30,6 @@ namespace FlyTheCoop.UI
         private void SetNormalMode()
         {
             levelLoader.StartGame(StateController.GameMode.Normal);
-        }
-        private void LoadMainMenu()
-        {
-            levelLoader.LoadMainMenu();
         }
     }
 }
