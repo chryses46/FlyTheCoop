@@ -103,6 +103,7 @@ namespace FlyTheCoop.Core
         private void GameWon()
         {
             SceneManager.LoadScene("WinScreen");
+            state.CurrentGameState = StateController.GameState.Menu;
             if(state.CurrentGameMode == StateController.GameMode.Hard)
             {
                eggManager.UpdateHighScore(); 

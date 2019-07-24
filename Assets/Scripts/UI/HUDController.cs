@@ -10,6 +10,20 @@ namespace FlyTheCoop.UI
         [SerializeField] Text eggCountText;
         [SerializeField] StateController state;
         [SerializeField] EggManager eggManager;
+        [SerializeField] Button pauseButton;
+#endregion
+#region TypeReferences
+        UIController ui;
+#endregion
+#region Startup
+        void Awake()
+        {
+            ui = FindObjectOfType<UIController>();
+        }
+        void Start()
+        {
+            pauseButton.onClick.AddListener(ui.PauseGame);
+        }
 #endregion
 #region UIControl
         public void UpdateEggCountText()

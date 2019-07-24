@@ -10,6 +10,7 @@ namespace FlyTheCoop.UI
 #region PublicProperties
         [SerializeField] GameObject mainSpalsh;
         [SerializeField] GameObject pauseScreen;
+        [SerializeField] Button pausePlayButton;
         [SerializeField] Button pauseMainMenuButton;
         [SerializeField] Button pauseControlsButton;
         [SerializeField] GameObject confirmMainMenuMessage;
@@ -31,17 +32,22 @@ namespace FlyTheCoop.UI
 #region StartUp
         void OnEnable()
         {
+            Screen.autorotateToLandscapeLeft = true;
+#if UNITY_ANDROID
+            Debug.Log("Android build");
+#endif
             eggManager = GetComponent<EggManager>();
             levelLoader = GetComponent<LevelLoader>();
             state = GetComponent<StateController>();
             controlsBackButton.onClick.AddListener(HideControlScreen);
+            pausePlayButton.onClick.AddListener(PauseGame);
             pauseControlsButton.onClick.AddListener(DisplayControlScreen);
             pauseMainMenuButton.onClick.AddListener(ConfirmMainMenu);
         }
 
         void Update()
         {
-            PauseGame();
+            PauseInteract();
         }
 #endregion
         public void HUDEnabled(bool enabled)
@@ -56,27 +62,32 @@ namespace FlyTheCoop.UI
                 hUD.SetActive(false);
             }
         }
-        public void PauseGame()
+        public void PauseInteract()
         {
-            if(controlsScreen.activeSelf != true & hUD.activeSelf == true)
+            if(controlsScreen.activeSelf != true & state.CurrentGameState != StateController.GameState.Menu)
             {
                 if(Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.P))
                 {
-                    if(state.CurrentGameState == StateController.GameState.Pause)
-                    {
-                        state.CurrentGameState = StateController.GameState.Play;
-                        PauseScreenControl();
-                        Time.timeScale = 1;
-                    }
-                    else
-                    {
-                        state.CurrentGameState = StateController.GameState.Pause;
-                        Time.timeScale = 0;
-                        PauseScreenControl();
-                    }
+                    PauseGame();
                 }
             }
         }
+        public void PauseGame()
+        {
+            if (state.CurrentGameState == StateController.GameState.Pause)
+            {
+                state.CurrentGameState = StateController.GameState.Play;
+                PauseScreenControl();
+                Time.timeScale = 1;
+            }
+            else
+            {
+                state.CurrentGameState = StateController.GameState.Pause;
+                Time.timeScale = 0;
+                PauseScreenControl();
+            }
+        }
+
         public void PauseScreenControl()
         {
             if(state.CurrentGameState == StateController.GameState.Pause)

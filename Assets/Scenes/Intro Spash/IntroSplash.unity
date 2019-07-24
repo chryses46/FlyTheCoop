@@ -451,7 +451,8 @@ PrefabInstance:
       propertyPath: mainSpalsh
       value: 
       objectReference: {fileID: 191175385}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2874233674059733604, guid: 362633441972da44db4366abc3afb138, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 362633441972da44db4366abc3afb138, type: 3}
 --- !u!1001 &9160726451491934918
 PrefabInstance:
