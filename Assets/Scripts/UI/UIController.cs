@@ -8,7 +8,7 @@ namespace FlyTheCoop.UI
     public class UIController : MonoBehaviour
     {
 #region PublicProperties
-        [SerializeField] GameObject mainSpalsh;
+        [SerializeField] MainMenuUI mainSpalsh;
         [SerializeField] GameObject pauseScreen;
         [SerializeField] Button pausePlayButton;
         [SerializeField] Button pauseMainMenuButton;
@@ -33,9 +33,7 @@ namespace FlyTheCoop.UI
         void OnEnable()
         {
             Screen.autorotateToLandscapeLeft = true;
-#if UNITY_ANDROID
-            Debug.Log("Android build");
-#endif
+
             eggManager = GetComponent<EggManager>();
             levelLoader = GetComponent<LevelLoader>();
             state = GetComponent<StateController>();
@@ -117,10 +115,12 @@ namespace FlyTheCoop.UI
             {
                 if(!mainSpalsh)
                 {
-                    mainSpalsh = FindObjectOfType<MainMenuUI>().gameObject;
+                    mainSpalsh = FindObjectOfType<MainMenuUI>();
                 }
-
-                mainSpalsh.SetActive(false);
+                
+                mainSpalsh.HideVersionInfo();
+                mainSpalsh.gameObject.SetActive(false);
+                
             }
 
             if(confirmMainMenuMessage.activeSelf)
@@ -139,7 +139,7 @@ namespace FlyTheCoop.UI
             }
             else if(state.CurrentGameState == StateController.GameState.Menu)
             {
-                mainSpalsh.SetActive(true);
+                mainSpalsh.gameObject.SetActive(true);
             }
         }
         private void ConfirmMainMenu()

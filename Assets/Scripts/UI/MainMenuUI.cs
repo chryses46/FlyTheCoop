@@ -19,7 +19,8 @@ namespace FlyTheCoop.UI
         [SerializeField] Button versionButton;
         [SerializeField] GameObject versionInfo;
         [SerializeField] Text versionText;
-        public bool shown;
+        [SerializeField] Button versionInfoCloseButton;
+        public bool shown = false;
 #endregion
 #region TypeReferences
         UIController ui;
@@ -39,7 +40,6 @@ namespace FlyTheCoop.UI
         }
         void Update()
         {
-            HideVersionInfoOnClickAway();
         }
 #endregion
         private void AddListeners()
@@ -50,10 +50,15 @@ namespace FlyTheCoop.UI
             versionButton.onClick.AddListener(ShowVersionInfo);
             achievementsButton.onClick.AddListener(LoadAchievements);
             eggStoreButton.onClick.AddListener(EggStore);
-
+            versionInfoCloseButton.onClick.AddListener(HideVersionInfo);
         }
         private void EggStore()
         {
+            if(versionInfo.activeSelf == true)
+            {
+                HideVersionInfo();
+            }
+
             ui.CallNoticeWindow("Check back soon for cool add-ons and unlocks you can buy with eggs from your Egg Basket!");
         }
         private void CheckGameCompleteStatus()
@@ -69,6 +74,10 @@ namespace FlyTheCoop.UI
         }
         private void LoadAchievements()
         {
+            if(versionInfo.activeSelf == true)
+            {
+                HideVersionInfo();
+            }
             ui.CallNoticeWindow("Achievements coming soon! Please check back later.");
         }
         private void SetEggBasketCountText()
@@ -90,58 +99,23 @@ namespace FlyTheCoop.UI
                 levelSelectText.color = levelSelectTextColor;
             }
         }
-        void HideVersionInfoOnClickAway()
-        {
-            if(Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Escape))
-            {
-                if(shown)
-                {
-                    HideVersionInfo();
-                }
-            }
-        }
         private void ShowVersionInfo()
         {
-            if(shown == true)
+            if(shown)
             {
+                HideVersionInfo();
                 shown = false;
             }
-
-            float yStart = versionInfo.GetComponent<RectTransform>().localPosition.y;
-
-            if(yStart == 1000)
+            else
             {
-                float yEnd = 0;
-                StartCoroutine(MoveObject(versionInfo, yStart, yEnd));
-                
+               versionInfo.SetActive(true);
+                shown = true; 
             }
-
-            shown = true;
         }
-        private void HideVersionInfo()
+        public void HideVersionInfo()
         {
-            float yStart = versionInfo.GetComponent<RectTransform>().localPosition.y;
-
-            if(yStart == 0)
-            {
-                float yEnd = 1000;
-                StartCoroutine(MoveObject(versionInfo, yStart, yEnd));
-                
-            }
-
+            versionInfo.SetActive(false);
             shown = false;
-        }
-        IEnumerator MoveObject(GameObject go, float start, float end)
-        {
-            RectTransform goRect = go.GetComponent<RectTransform>();
-            float t = 0.0f;
-
-            while(t < 1)
-            {
-                t += Time.deltaTime / .5f;
-                goRect.localPosition = new Vector2(0,Mathf.Lerp(start,end,t));
-                yield return null;
-            }
         }
         public void GetVersionNumber()
         {
