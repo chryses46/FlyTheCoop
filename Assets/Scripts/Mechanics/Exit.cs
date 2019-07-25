@@ -18,6 +18,11 @@ namespace FlyTheCoop.Mechanics
         }
         void Start()
         {
+            InformEggManager();
+        }
+
+        private void InformEggManager()
+        {
             eggManager.UpdateExit(gameObject, requiredEggs);
         }
 #endregion

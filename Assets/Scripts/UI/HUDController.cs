@@ -22,10 +22,14 @@ namespace FlyTheCoop.UI
         }
         void Start()
         {
+            AddListeners();
+        }
+        private void AddListeners()
+        {
             pauseButton.onClick.AddListener(ui.PauseGame);
         }
-#endregion
-#region UIControl
+        #endregion
+        #region UIControl
         public void UpdateEggCountText()
         {   
             if(state.CurrentGameMode == StateController.GameMode.Hard)

@@ -137,7 +137,6 @@ namespace FlyTheCoop.Core
                 EnableExit();
             }
         }
-
         private void EnableExit()
         {
             Exit.tag = "Finish";

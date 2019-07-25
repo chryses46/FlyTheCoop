@@ -48,7 +48,24 @@ namespace FlyTheCoop.Core
                 SetNormalModeComplete();
             }
         }
+        private void CallNextScene()
+        {
+            levelLoader.NextScene();
+        }
+        private void DisableCollisions()
+        {
+            Chicken chicken = FindObjectOfType<Chicken>();
+            if (chicken)
+            {
+                chicken.collisionsDisabled = !chicken.collisionsDisabled;
+            }
+        }
+        private void AddToEggCount()
+        {
+            HUDController hud = FindObjectOfType<HUDController>();
 
+            eggManager.EggCollected();
+        }
         private void SetNormalModeComplete()
         {
             if(ppc.IsNormalModeCompleted())
@@ -61,24 +78,6 @@ namespace FlyTheCoop.Core
             }
             
         }
-
-        private void AddToEggCount()
-        {
-            HUDController hud = FindObjectOfType<HUDController>();
-
-            eggManager.EggCollected();
-        }
-        private void DisableCollisions()
-        {
-            Chicken chicken = FindObjectOfType<Chicken>();
-            if (chicken)
-            {
-                chicken.collisionsDisabled = !chicken.collisionsDisabled;
-            }
-        }
-        private void CallNextScene()
-        {
-            levelLoader.NextScene();
-        }
+        
     }
 }

@@ -44,7 +44,6 @@ namespace FlyTheCoop.UI
 
             backButton.onClick.AddListener(levelLoader.LoadMainMenu);
         }
-
         private void ComingSoonMessage()
         {
             ui.CallNoticeWindow("Come back soon for more levels!");

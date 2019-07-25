@@ -11,9 +11,7 @@ namespace FlyTheCoop.Core
                 Normal,
                 Hard
             }
-        
             private GameMode _gameMode;
-
             public GameMode CurrentGameMode
             {
                 get{ return _gameMode; }
@@ -22,14 +20,12 @@ namespace FlyTheCoop.Core
 #endregion
 #region GameState
             //Enum for gameState
-
             public enum GameState
             {
                 Menu,
                 Play,
                 Pause
             }
-
             private GameState _gameState;
             public GameState CurrentGameState
             {

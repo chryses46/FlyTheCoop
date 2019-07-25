@@ -12,16 +12,13 @@ namespace FlyTheCoop.Player
         [Header("Physics Properties")]
         [SerializeField] float rcsThrust = 175f;
         [SerializeField] float mainThrust = 20f;
-
         [Header("Sound Effects")]
         [SerializeField] AudioClip flyingChicken;
         [SerializeField] AudioClip death;
         [SerializeField] AudioClip win;
-
         [Header("Particle Effects")]
         [SerializeField] ParticleSystem flyingChickenParticles;
         [SerializeField] ParticleSystem deathParticles;
-
         [Header("Debug Bools")]
         public bool isTransitioning = false;
         public bool collisionsDisabled = false;
@@ -123,7 +120,6 @@ namespace FlyTheCoop.Player
             audioSource.Stop();
             flyingChickenParticles.Stop();
         }
-
         public void ApplyThrust()
         {
             rigidBody.AddRelativeForce(Vector3.up * mainThrust);
@@ -135,11 +131,9 @@ namespace FlyTheCoop.Player
                 audioSource.PlayOneShot(flyingChicken);
             }
         }
-        
 #endregion
     void OnCollisionEnter(Collision collision)
         {
-
             if (isTransitioning || collisionsDisabled) { return; }
 
             switch (collision.gameObject.tag)

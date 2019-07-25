@@ -64,6 +64,5 @@ namespace FlyTheCoop.Core
         {
             PlayerPrefs.SetString("NormalModeCompleted", "true");
         }
-
     }
 }

@@ -56,7 +56,6 @@ namespace FlyTheCoop.UI
         {
             ui.CallNoticeWindow("Check back soon for cool add-ons and unlocks you can buy with eggs from your Egg Basket!");
         }
-
         private void CheckGameCompleteStatus()
         {
             if(ppc.IsNormalModeCompleted())

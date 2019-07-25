@@ -39,12 +39,15 @@ namespace FlyTheCoop.UI
             eggManager = GetComponent<EggManager>();
             levelLoader = GetComponent<LevelLoader>();
             state = GetComponent<StateController>();
+            AddListeners();
+        }
+        private void AddListeners()
+        {
             controlsBackButton.onClick.AddListener(HideControlScreen);
             pausePlayButton.onClick.AddListener(PauseGame);
             pauseControlsButton.onClick.AddListener(DisplayControlScreen);
             pauseMainMenuButton.onClick.AddListener(ConfirmMainMenu);
         }
-
         void Update()
         {
             PauseInteract();
@@ -87,7 +90,6 @@ namespace FlyTheCoop.UI
                 PauseScreenControl();
             }
         }
-
         public void PauseScreenControl()
         {
             if(state.CurrentGameState == StateController.GameState.Pause)
@@ -104,8 +106,6 @@ namespace FlyTheCoop.UI
                 pauseScreen.SetActive(false);
             }
         }
-
-
         public void DisplayControlScreen()
         {
             

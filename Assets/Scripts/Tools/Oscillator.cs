@@ -19,9 +19,11 @@ namespace FlyTheCoop.Tools
         {
             startingPos = transform.position;
         }
-
-        // Update is called once per frame
         void Update()
+        {
+            ProcessOscillation();
+        }
+        private void ProcessOscillation()
         {
             if (System.Math.Abs(period) > 0)
             {

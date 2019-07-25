@@ -18,6 +18,10 @@ namespace FlyTheCoop.UI
         void Start()
         {
             levelLoader = FindObjectOfType<LevelLoader>();
+            AddListeners();
+        }
+        private void AddListeners()
+        {
             normalButton.onClick.AddListener(SetNormalMode);
             hardButton.onClick.AddListener(SetHardMode);
             mainMenu.onClick.AddListener(levelLoader.LoadMainMenu);

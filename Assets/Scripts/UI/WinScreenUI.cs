@@ -30,15 +30,19 @@ namespace FlyTheCoop.UI
             ui = FindObjectOfType<UIController>();
             ppc = FindObjectOfType<PlayerPrefConfig>();
             state = FindObjectOfType<StateController>();
-            DetermineText();
+            DetermineModeText();
             SetEggsCollectedText();
             SetMostEggsText();
-            newGame.onClick.AddListener(CallLoadModeScene);
+            AddListeners();
+        }
+        private void AddListeners()
+        {
+            newGame.onClick.AddListener(levelLoader.LoadModeScene);
             mainMenu.onClick.AddListener(levelLoader.LoadMainMenu);
         }
 #endregion
 #region WinScreenUIMethods
-        private void DetermineText()
+        private void DetermineModeText()
         {
             ui.HUDEnabled(false);
 
@@ -52,12 +56,10 @@ namespace FlyTheCoop.UI
                 ppc.NormalModeCompleted();
             }
         }
-
         private void EnableNormalModeText()
         {
             normalModeText.gameObject.SetActive(true);
         }
-
         private void EnableHardModeUIText()
         {
             for(int i=0; i< hardModeUIText.Count; i++)
@@ -65,20 +67,13 @@ namespace FlyTheCoop.UI
                 hardModeUIText[i].gameObject.SetActive(true);
             }
         }
-
         private void SetEggsCollectedText()
         {
             eggsCollected.text = "Eggs Collected: " + eggManager.TotalScore;
         }
-
         private void SetMostEggsText()
         {
             mostEggsCollected.text = "Most Eggs Collected: " + ppc.HighScore;
-        }
-
-        void CallLoadModeScene()
-        {
-            levelLoader.LoadModeScene();
         }
 #endregion
     }
