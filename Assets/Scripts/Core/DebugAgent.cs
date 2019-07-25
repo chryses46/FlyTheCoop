@@ -9,12 +9,14 @@ namespace FlyTheCoop.Core
 #region TypeReferences
         LevelLoader levelLoader;
         EggManager eggManager;
+        PlayerPrefConfig ppc;
 #endregion
 #region Startup
         void Start()
         {
             levelLoader = GetComponent<LevelLoader>();
             eggManager = GetComponent<EggManager>();
+            ppc = GetComponent<PlayerPrefConfig>();
         }
         void Update()
         {
@@ -43,9 +45,23 @@ namespace FlyTheCoop.Core
 
             if(Input.GetKeyDown(KeyCode.W))
             {
-                PlayerPrefs.SetString("NormalModeCompleted", "false");
+                SetNormalModeComplete();
             }
         }
+
+        private void SetNormalModeComplete()
+        {
+            if(ppc.IsNormalModeCompleted())
+            {
+                PlayerPrefs.SetString("NormalModeCompleted", "false");    
+            }
+            else
+            {
+                ppc.NormalModeCompleted();
+            }
+            
+        }
+
         private void AddToEggCount()
         {
             HUDController hud = FindObjectOfType<HUDController>();
