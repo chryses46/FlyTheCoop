@@ -26,17 +26,19 @@ namespace FlyTheCoop.Player
         public bool isTransitioning = false;
         public bool collisionsDisabled = false;
 #endregion
-#region PrivateFields
-        private RigidbodyConstraints originalConstraints;
-#endregion
 #region TypeReferences
         Rigidbody rigidBody;
         AudioSource audioSource;
         LevelLoader levelLoader;
         UIController ui;
         StateController state;
+        MobileUp mobile;
 #endregion
 #region Startup
+        void Awake()
+        {
+            mobile = FindObjectOfType<MobileUp>();
+        }
         public void Start()
         {
             Time.timeScale = 1;
@@ -45,7 +47,7 @@ namespace FlyTheCoop.Player
             levelLoader = FindObjectOfType<LevelLoader>();
             ui = FindObjectOfType<UIController>();
             state = FindObjectOfType<StateController>();
-            originalConstraints = rigidBody.constraints;
+            mobile.chicken = this;
         }
         void Update()
         {
@@ -76,7 +78,7 @@ namespace FlyTheCoop.Player
         }
 #endregion
 #region ControlMethods
-        private void RespondToRotateInput()
+        public void RespondToRotateInput()
         {
             float rotationThisFrame = rcsThrust * Time.deltaTime;
 
@@ -116,13 +118,13 @@ namespace FlyTheCoop.Player
                 StopApplyingThrust();
             }
         }
-        private void StopApplyingThrust()
+        public void StopApplyingThrust()
         {
             audioSource.Stop();
             flyingChickenParticles.Stop();
         }
 
-        private void ApplyThrust()
+        public void ApplyThrust()
         {
             rigidBody.AddRelativeForce(Vector3.up * mainThrust);
 
