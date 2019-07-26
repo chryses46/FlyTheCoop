@@ -29,13 +29,8 @@ namespace FlyTheCoop.Player
         LevelLoader levelLoader;
         UIController ui;
         StateController state;
-        MobileUp mobile;
 #endregion
 #region Startup
-        void Awake()
-        {
-            mobile = FindObjectOfType<MobileUp>();
-        }
         public void Start()
         {
             Time.timeScale = 1;
@@ -44,7 +39,9 @@ namespace FlyTheCoop.Player
             levelLoader = FindObjectOfType<LevelLoader>();
             ui = FindObjectOfType<UIController>();
             state = FindObjectOfType<StateController>();
-            mobile.chicken = this;
+
+            TestingTouch testingTouch = FindObjectOfType<TestingTouch>();
+            testingTouch.chicken = this;
         }
         void Update()
         {
@@ -75,13 +72,13 @@ namespace FlyTheCoop.Player
         }
 #endregion
 #region ControlMethods
-        public void RespondToRotateInput()
+        public void RespondToRotateInput(int rotateKey = 0)
         {
             float rotationThisFrame = rcsThrust * Time.deltaTime;
 
             rigidBody.freezeRotation = true; // take manual control of rotation
 
-            if (Input.GetKey(KeyCode.A)) // can only press A or B, but not at the same time
+            if (Input.GetKey(KeyCode.A) || rotateKey == 1) // can only press A or B, but not at the same time
             {
                 if (SceneManager.GetActiveScene().name == "Garage")
                 {
@@ -92,7 +89,7 @@ namespace FlyTheCoop.Player
                     transform.Rotate(Vector3.forward * rotationThisFrame);
                 }
             }
-            else if (Input.GetKey(KeyCode.D))
+            else if (Input.GetKey(KeyCode.D) || rotateKey == 2)
             {
                 if (SceneManager.GetActiveScene().name == "Garage")
                 {

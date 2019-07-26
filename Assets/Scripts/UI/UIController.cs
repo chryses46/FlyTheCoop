@@ -19,7 +19,7 @@ namespace FlyTheCoop.UI
         public GameObject controlsScreen;
         [SerializeField] Button controlsBackButton;
         [SerializeField] GameObject hUD;
-        [SerializeField] GameObject noticeWindow;
+        public GameObject noticeWindow;
         [SerializeField] Text noticeText;
         [SerializeField] Button closeNoticeWindowButton;
 #endregion
@@ -117,9 +117,13 @@ namespace FlyTheCoop.UI
                 {
                     mainSpalsh = FindObjectOfType<MainMenuUI>();
                 }
-                
+                if(noticeWindow.activeSelf == true)
+                {
+                    CloseNoticeWindow();
+                }
                 mainSpalsh.HideVersionInfo();
                 mainSpalsh.gameObject.SetActive(false);
+                
                 
             }
 
@@ -151,6 +155,7 @@ namespace FlyTheCoop.UI
         private void GoToMainMenu()
         {
             levelLoader.LoadMainMenu();
+            Time.timeScale = 1;
             confirmMainMenuMessage.SetActive(false);
             pauseScreen.SetActive(false);
         }

@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using FlyTheCoop.Core;
-using System;
 
 namespace FlyTheCoop.UI
 {
@@ -108,7 +107,11 @@ namespace FlyTheCoop.UI
             }
             else
             {
-               versionInfo.SetActive(true);
+                if(ui.noticeWindow.activeSelf == true)
+                {
+                    ui.CloseNoticeWindow();
+                }
+                versionInfo.SetActive(true);
                 shown = true; 
             }
         }
