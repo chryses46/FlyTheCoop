@@ -975,7 +975,7 @@ PrefabInstance:
     - target: {fileID: 2851106090457988895, guid: f6ea074bb8b5a4ff4aeab6c90a9444c3,
         type: 3}
       propertyPath: m_RootOrder
-      value: 45
+      value: 44
       objectReference: {fileID: 0}
     - target: {fileID: 2851106090457988895, guid: f6ea074bb8b5a4ff4aeab6c90a9444c3,
         type: 3}
@@ -1120,6 +1120,7 @@ Transform:
   m_Children:
   - {fileID: 1205954128}
   - {fileID: 74714190}
+  - {fileID: 2072095985}
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1870,7 +1871,6 @@ Transform:
   - {fileID: 1227625755}
   - {fileID: 1393901874}
   - {fileID: 1549181649}
-  - {fileID: 2072095985}
   - {fileID: 1657394933}
   - {fileID: 844936118}
   - {fileID: 139011010}
@@ -2435,7 +2435,7 @@ PrefabInstance:
     - target: {fileID: 2851106090457988895, guid: f6ea074bb8b5a4ff4aeab6c90a9444c3,
         type: 3}
       propertyPath: m_RootOrder
-      value: 44
+      value: 43
       objectReference: {fileID: 0}
     - target: {fileID: 2851106090457988895, guid: f6ea074bb8b5a4ff4aeab6c90a9444c3,
         type: 3}
@@ -4526,7 +4526,7 @@ PrefabInstance:
     - target: {fileID: 3112812629455794727, guid: d14f2ac56af4d4163999a23064adbb49,
         type: 3}
       propertyPath: m_RootOrder
-      value: 46
+      value: 45
       objectReference: {fileID: 0}
     - target: {fileID: 3112812629455794727, guid: d14f2ac56af4d4163999a23064adbb49,
         type: 3}
@@ -4816,7 +4816,7 @@ PrefabInstance:
     - target: {fileID: 2851106090457988895, guid: f6ea074bb8b5a4ff4aeab6c90a9444c3,
         type: 3}
       propertyPath: m_RootOrder
-      value: 43
+      value: 42
       objectReference: {fileID: 0}
     - target: {fileID: 2851106090457988895, guid: f6ea074bb8b5a4ff4aeab6c90a9444c3,
         type: 3}
@@ -5698,7 +5698,7 @@ PrefabInstance:
     - target: {fileID: 5330488718251790756, guid: 68b713693a51f4a91997acb40f206b9c,
         type: 3}
       propertyPath: m_RootOrder
-      value: 47
+      value: 46
       objectReference: {fileID: 0}
     - target: {fileID: 5330488718251790756, guid: 68b713693a51f4a91997acb40f206b9c,
         type: 3}
@@ -5764,21 +5764,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5330488719092766434, guid: 68b713693a51f4a91997acb40f206b9c,
-        type: 3}
-      propertyPath: m_Intensity
-      value: 11
-      objectReference: {fileID: 0}
-    - target: {fileID: 5330488719092766434, guid: 68b713693a51f4a91997acb40f206b9c,
-        type: 3}
-      propertyPath: m_Range
-      value: 3.812117
-      objectReference: {fileID: 0}
-    - target: {fileID: 5330488719092766434, guid: 68b713693a51f4a91997acb40f206b9c,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5330488719216213953, guid: 68b713693a51f4a91997acb40f206b9c,
         type: 3}
@@ -5870,6 +5855,25 @@ PrefabInstance:
       propertyPath: EmissionModule.rateOverTime.scalar
       value: 64.03
       objectReference: {fileID: 0}
+    - target: {fileID: 574865611, guid: 68b713693a51f4a91997acb40f206b9c, type: 3}
+      propertyPath: requiredEggs
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5330488719092766434, guid: 68b713693a51f4a91997acb40f206b9c,
+        type: 3}
+      propertyPath: m_Intensity
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 5330488719092766434, guid: 68b713693a51f4a91997acb40f206b9c,
+        type: 3}
+      propertyPath: m_Range
+      value: 3.812117
+      objectReference: {fileID: 0}
+    - target: {fileID: 5330488719092766434, guid: 68b713693a51f4a91997acb40f206b9c,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5330488719216213952, guid: 68b713693a51f4a91997acb40f206b9c,
         type: 3}
       propertyPath: m_AllowRoll
@@ -5879,10 +5883,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_ApplyActiveColorSpace
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 574865611, guid: 68b713693a51f4a91997acb40f206b9c, type: 3}
-      propertyPath: requiredEggs
-      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 68b713693a51f4a91997acb40f206b9c, type: 3}
@@ -5902,7 +5902,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &2072095984
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5931,8 +5931,8 @@ Transform:
   m_LocalPosition: {x: -9.194277, y: -13.488527, z: 126.13874}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 536555101}
-  m_RootOrder: 42
+  m_Father: {fileID: 225063963}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2084977491
 PrefabInstance:

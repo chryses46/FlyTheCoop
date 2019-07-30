@@ -5529,7 +5529,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &782650252
 Transform:
   m_ObjectHideFlags: 0
@@ -18775,7 +18775,7 @@ PrefabInstance:
     - target: {fileID: 3910544984943300716, guid: 5c0b1994a77c5498cb014a44c2c30452,
         type: 3}
       propertyPath: m_Intensity
-      value: 1.79
+      value: 1.21
       objectReference: {fileID: 0}
     - target: {fileID: 3910544984943300716, guid: 5c0b1994a77c5498cb014a44c2c30452,
         type: 3}
@@ -19823,6 +19823,11 @@ PrefabInstance:
     - target: {fileID: 1878967757490232075, guid: 64563719e31e54b41b3e0b650bd3424d,
         type: 3}
       propertyPath: m_UseGravity
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9058011378907375728, guid: 64563719e31e54b41b3e0b650bd3424d,
+        type: 3}
+      propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []

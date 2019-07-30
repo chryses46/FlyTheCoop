@@ -19,6 +19,7 @@ namespace FlyTheCoop.UI
         [SerializeField] GameObject versionInfo;
         [SerializeField] Text versionText;
         [SerializeField] Button versionInfoCloseButton;
+        [SerializeField] Button exitGameButton;
         public bool shown = false;
 #endregion
 #region TypeReferences
@@ -50,6 +51,7 @@ namespace FlyTheCoop.UI
             achievementsButton.onClick.AddListener(LoadAchievements);
             eggStoreButton.onClick.AddListener(EggStore);
             versionInfoCloseButton.onClick.AddListener(HideVersionInfo);
+            exitGameButton.onClick.AddListener(ExitGame);
         }
         private void EggStore()
         {
@@ -124,6 +126,10 @@ namespace FlyTheCoop.UI
         {
             string versionNumber = "v." + Application.version;
             versionText.text = versionNumber;
+        }
+        private void ExitGame()
+        {
+            Application.Quit();
         }
     }
 }

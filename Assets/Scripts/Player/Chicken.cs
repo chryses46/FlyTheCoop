@@ -39,9 +39,10 @@ namespace FlyTheCoop.Player
             levelLoader = FindObjectOfType<LevelLoader>();
             ui = FindObjectOfType<UIController>();
             state = FindObjectOfType<StateController>();
-
-            TestingTouch testingTouch = FindObjectOfType<TestingTouch>();
+/*  Currently pausing mobile development until further notice.
+            TouchManager testingTouch = FindObjectOfType<TouchManager>(); 
             testingTouch.chicken = this;
+*/
         }
         void Update()
         {
@@ -66,7 +67,9 @@ namespace FlyTheCoop.Player
             audioSource.Stop();
             audioSource.PlayOneShot(death);
             deathParticles.Play();
-
+            flyingChickenParticles.Stop();
+            gameObject.GetComponent<MeshRenderer>().enabled = false;
+            gameObject.GetComponent<MeshCollider>().enabled = false;
             // Load scene based on game mode
             StartCoroutine(levelLoader.LoadSceneWithDelay(state.CurrentGameMode, false));
         }

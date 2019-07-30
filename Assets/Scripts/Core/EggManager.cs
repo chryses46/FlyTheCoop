@@ -145,8 +145,6 @@ namespace FlyTheCoop.Core
                 Exit.transform.Find("Light").gameObject.SetActive(true);
             }
             Exit.transform.Find("Effect").GetComponent<ParticleSystem>().Play();
-
-            Debug.Log("Exit unlocked: " + Exit.tag);
         }
         #endregion
     }
